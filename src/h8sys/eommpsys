@@ -1,0 +1,18 @@
+/**
+ * @file eommpsys
+ * @author 20eo0125 松原広樹
+ * @brief H8に深く依存する部分がまとめてあります。
+ *
+ * @copyright Copyright (c) 2022
+ *
+ */
+
+#pragma once
+
+#include <3069.h>
+
+#include "iodef.hpp"
+#include "peripheral.hpp"
+#include "utils/utils.hpp"
+
+// constexpr uint32_t CPU_CLOCK = 25000000;

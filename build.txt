@@ -1,0 +1,1 @@
+h8300-elf-gcc -mh -Wall src/main.cpp -o build/program.elf -I./include -ladd3069 -L ./include

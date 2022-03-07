@@ -12,11 +12,14 @@
 #include <cinttypes>
 #include "timerManager.hpp"
 
+// using namespace h8mmpsys;
+
 namespace eommpsys {
 /**
  * @brief 時間関係のクラス
  *
- * @details 分周なしか8分周のタイマーを使用してください。なぜなら書くのがめんどくさかったからです。
+ * @details
+ * 分周なしか8分周のタイマーを使用してください。なぜなら書くのがめんどくさかったからです。
  */
 class Time {
  private:
@@ -65,7 +68,8 @@ class Time {
   /**
    * @brief 初期化関数
    *
-   * @param tim 使用するタイマーオブジェクト(分周なしか8分周の設定をしたものを使用してください)
+   * @param tim
+   * 使用するタイマーオブジェクト(分周なしか8分周の設定をしたものを使用してください)
    */
   static void init(TimerManager::TimerBase<uint16_t>& tim) {
     timer = &tim;
@@ -86,7 +90,7 @@ class Time {
    */
   static void delay(uint64_t ms) {
     uint64_t start_time = getCurrentTime();
-    while (getCurrentTime() - start_time <= ms)
+    while (getCurrentTime() - start_time < ms)
       ;
   }
 };

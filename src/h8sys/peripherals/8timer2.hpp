@@ -5,73 +5,73 @@
 #include "inttrupts/intr.h"
 #include "iodef.hpp"
 
-namespace eommpsys {
+namespace h8mmpsys {
 namespace Peripherals {
 namespace TMR2 {
 /// CMFAによる割り込みの認可状況
 inline bool intrruptStatsA(void) {
-  return eommpsys::H8Reg::TMR2.TCSR.BIT.CMFA;
+  return h8mmpsys::H8Reg::TMR2.TCSR.BIT.CMFA;
 }
 /// CMFAのリセット
 inline void resetIntrFlagA(void) {
-  eommpsys::H8Reg::TMR2.TCSR.BIT.CMFA = 0;
+  h8mmpsys::H8Reg::TMR2.TCSR.BIT.CMFA = 0;
 }
 /// CMFAによる割り込みの設定(true: 許可 false: 禁止)
 inline void permitIntrA(bool flag) {
-  eommpsys::H8Reg::TMR2.TCR.BIT.CMIEA = flag;
+  h8mmpsys::H8Reg::TMR2.TCR.BIT.CMIEA = flag;
 }
 /// CMFAによる割り込みの認可状況
 inline bool getPermissionIntrA(void) {
-  return eommpsys::H8Reg::TMR2.TCR.BIT.CMIEA;
+  return h8mmpsys::H8Reg::TMR2.TCR.BIT.CMIEA;
 }
 /// TCORBによるコンペアマッチ・インプットキャプチャの発生を示す
 inline bool intrruptStatsB(void) {
-  return eommpsys::H8Reg::TMR2.TCSR.BIT.CMFB;
+  return h8mmpsys::H8Reg::TMR2.TCSR.BIT.CMFB;
 }
 /// CMFBのリセット
 inline void resetIntrFlagB(void) {
-  eommpsys::H8Reg::TMR2.TCSR.BIT.CMFB = 0;
+  h8mmpsys::H8Reg::TMR2.TCSR.BIT.CMFB = 0;
 }
 /// CMFBによる割り込みの設定(true: 許可 false: 禁止)
 inline void permitIntrB(bool flag) {
-  eommpsys::H8Reg::TMR2.TCR.BIT.CMIEB = flag;
+  h8mmpsys::H8Reg::TMR2.TCR.BIT.CMIEB = flag;
 }
 /// CMFAによる割り込みの認可状況
 inline bool getPermissionIntrB(void) {
-  return eommpsys::H8Reg::TMR2.TCR.BIT.CMIEB;
+  return h8mmpsys::H8Reg::TMR2.TCR.BIT.CMIEB;
 }
 /// TCORBによるコンペアマッチ・インプットキャプチャの発生を示す
 inline bool intrruptStatsOVF(void) {
-  return eommpsys::H8Reg::TMR2.TCSR.BIT.OVF;
+  return h8mmpsys::H8Reg::TMR2.TCSR.BIT.OVF;
 }
 /// CMFBのリセット
 inline void resetIntrFlagOVF(void) {
-  eommpsys::H8Reg::TMR2.TCSR.BIT.OVF = 0;
+  h8mmpsys::H8Reg::TMR2.TCSR.BIT.OVF = 0;
 }
 /// CMFBによる割り込みの設定(true: 許可 false: 禁止)
 inline void permitIntrOVF(bool flag) {
-  eommpsys::H8Reg::TMR2.TCR.BIT.OVIE = flag;
+  h8mmpsys::H8Reg::TMR2.TCR.BIT.OVIE = flag;
 }
 /// CMFAによる割り込みの認可状況
 inline bool getPermissionIntrOVF(void) {
-  return eommpsys::H8Reg::TMR2.TCR.BIT.OVIE;
+  return h8mmpsys::H8Reg::TMR2.TCR.BIT.OVIE;
 }
 
 /// TCORAを取得する
 inline uint8_t getTCORA(void) {
-  return eommpsys::H8Reg::TMR2.TCORA;
+  return h8mmpsys::H8Reg::TMR2.TCORA;
 }
 /// TCORAに代入する
 inline void setTCORA(uint8_t val) {
-  eommpsys::H8Reg::TMR2.TCORA = val;
+  h8mmpsys::H8Reg::TMR2.TCORA = val;
 }
 /// TCORBを取得する
 inline uint8_t getTCORB(void) {
-  return eommpsys::H8Reg::TMR2.TCORB;
+  return h8mmpsys::H8Reg::TMR2.TCORB;
 }
 /// TCORBに代入する
 inline void setTCORB(uint8_t val) {
-  eommpsys::H8Reg::TMR2.TCORB = val;
+  h8mmpsys::H8Reg::TMR2.TCORB = val;
 }
 /// クロックソース選択レジスタの値を計算
 static constexpr uint8_t calcClockSource(clockSource_t cs) {
@@ -109,12 +109,12 @@ static constexpr uint8_t calcClockSource(clockSource_t cs) {
 }
 /// クロックソースの設定
 inline void setClockSource(clockSource_t cs) {
-  eommpsys::H8Reg::TMR2.TCR.BIT.CKS = calcClockSource(cs);
+  h8mmpsys::H8Reg::TMR2.TCR.BIT.CKS = calcClockSource(cs);
 }
 /// 現在のクロックソース設定の読み出し
 inline clockSource_t getClockSource(void) {
   clockSource_t ret_val;
-  switch (eommpsys::H8Reg::TMR2.TCR.BIT.CKS) {
+  switch (h8mmpsys::H8Reg::TMR2.TCR.BIT.CKS) {
     case 0x00:
       ret_val = clockSource_t::No_Source;
       break;
@@ -169,12 +169,12 @@ static constexpr uint8_t calcCounterClearCause(counterClearTrigger_t cause) {
 }
 /// カウンタクリア要因の設定
 inline void setCounterClearCause(counterClearTrigger_t cause) {
-  eommpsys::H8Reg::TMR2.TCR.BIT.CCLR = calcCounterClearCause(cause);
+  h8mmpsys::H8Reg::TMR2.TCR.BIT.CCLR = calcCounterClearCause(cause);
 }
 /// 設定中のカウンタクリア要因の取得
 inline uint8_t getCounterClearCause(void) {
   counterClearTrigger_t ret_val;
-  switch (eommpsys::H8Reg::TMR2.TCR.BIT.CCLR) {
+  switch (h8mmpsys::H8Reg::TMR2.TCR.BIT.CCLR) {
     case 0x00:
       ret_val = counterClearTrigger_t::NeverClear;
       break;
@@ -217,11 +217,11 @@ static constexpr uint8_t calcIOMode(IOMode_t mode) {
 }
 
 inline void setIOModeA(IOMode_t mode) {
-  eommpsys::H8Reg::TMR2.TCSR.BIT.OS = calcIOMode(mode);
+  h8mmpsys::H8Reg::TMR2.TCSR.BIT.OS = calcIOMode(mode);
 }
 
 inline void setIOModeB(IOMode_t mode) {
-  eommpsys::H8Reg::TMR2.TCSR.BIT.OIS = calcIOMode(mode);
+  h8mmpsys::H8Reg::TMR2.TCSR.BIT.OIS = calcIOMode(mode);
 }
 /// タイマーカウントをスタート
 inline void startTimer(clockSource_t cs) {
@@ -234,4 +234,4 @@ inline void stopTimer(void) {
 
 }  // namespace TMR2
 }  // namespace Peripherals
-}  // namespace eommpsys
+}  // namespace h8mmpsys

@@ -1,8 +1,7 @@
-#include "timerManager.hpp"
+#include "TimerIntrMane.hpp"
 
 namespace eommpsys {
 namespace TimerManager {
-
 void TimerCH0::adaptHandlerA(void) {
   using namespace Peripherals;
   if (this->handler_a != nullptr) {
@@ -186,6 +185,5 @@ void TMR23::stop(void) {
   TMR2::stopTimer();
   TMR3::stopTimer();
 }
-
 }  // namespace TimerManager
 }  // namespace eommpsys

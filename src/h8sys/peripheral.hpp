@@ -8,7 +8,7 @@
 #include "peripherals/8timer2.hpp"
 #include "peripherals/8timer3.hpp"
 
-namespace eommpsys {
+namespace h8mmpsys {
 
 inline void ENABLE_GLOBAL_INTRRUPT(void) {
   EI;
@@ -17,4 +17,4 @@ inline void DISABLE_GLOBAL_INTRRUPT(void) {
   DI;
 }
 
-}  // namespace eommpsys
+}  // namespace h8mmpsys

@@ -3,7 +3,7 @@
 // #include <inttypes.h>
 #include <cinttypes>
 
-namespace eommpsys {
+namespace h8mmpsys {
 
 using _LONG = uint32_t;
 using _WORD = uint16_t;
@@ -24,26 +24,6 @@ struct bitAccess_t {
   }
   operator T() const { return (base & mask) >> L; }
 };
-/// シングルトン基底クラス
-template <class T>
-class Singleton {
- public:
-  static T& getInstance() { return instance; }
-
- protected:
-  Singleton() = default;
-
-  Singleton(const Singleton&) = delete;
-  Singleton& operator=(const Singleton&) = delete;
-  Singleton(Singleton&&) = delete;
-  Singleton& operator=(Singleton&&) = delete;
-
- private:
-  static T instance;
-};
-
-template <class T>
-T Singleton<T>::instance;
 
 /// プリスケーラ分周回数
 enum clockSource_t {
@@ -85,4 +65,4 @@ enum IOMode_t {
   InputBothEdges
 };
 
-}  // namespace eommpsys
+}  // namespace h8mmpsys

@@ -12,6 +12,8 @@
 #include <eommpsys>
 #include "utils/timerManager.hpp"
 
+using namespace h8mmpsys;
+
 namespace eommpsys {
 namespace ui {
 
@@ -114,9 +116,9 @@ class TactSwitch {
 
  public:
   /**
-  * @brief TactSwitch のコンストラクタ。
-  *
-  */
+   * @brief TactSwitch のコンストラクタ。
+   *
+   */
   TactSwitch() = default;
   /**
    * @brief TactSwitch のデコンストラクタ。
@@ -130,7 +132,8 @@ class TactSwitch {
   /**
    * @brief 初期化関数。
    *
-   * @details ポート5の1ビットを入力モードにし、内部プルアップモードをオンにする。
+   * @details
+   * ポート5の1ビットを入力モードにし、内部プルアップモードをオンにする。
    */
   static inline void init(void) {
     H8Reg::P5DDR &= ~(0x01);
@@ -167,9 +170,9 @@ class SlideSwitch {
 
  public:
   /**
-  * @brief SlideSwitch のコンストラクタ。
-  *
-  */
+   * @brief SlideSwitch のコンストラクタ。
+   *
+   */
   SlideSwitch() = default;
   /**
    * @brief SlideSwitch のデコンストラクタ。
@@ -183,7 +186,8 @@ class SlideSwitch {
   /**
    * @brief 初期化関数。
    *
-   * @details ポート5の3ビットを入力モードにし、内部プルアップモードをオンにする。
+   * @details
+   * ポート5の3ビットを入力モードにし、内部プルアップモードをオンにする。
    */
   static inline void init(void) {
     H8Reg::P5DDR &= ~(0x04);
@@ -252,7 +256,8 @@ class CeraBuzzer {
     return val;
   }
   /**
-   * @brief 鳴らしたい周波数から16bitタイマーのコンペアマッチに設定するべき値を計算する。
+   * @brief
+   * 鳴らしたい周波数から16bitタイマーのコンペアマッチに設定するべき値を計算する。
    *
    * @param hz
    * @return uint16_t コンペアマッチの値
@@ -273,9 +278,9 @@ class CeraBuzzer {
 
  public:
   /**
-  * @brief CeraBuzzer のコンストラクタ。
-  *
-  */
+   * @brief CeraBuzzer のコンストラクタ。
+   *
+   */
   CeraBuzzer() = default;
   /**
    * @brief CeraBuzzer のデコンストラクタ。
@@ -288,7 +293,8 @@ class CeraBuzzer {
    *
    * @param tim 使用するタイマーのオブジェクト。
    *
-   * @details ポート1の8ビットを出力モードにし、基準周波数を計算し、割り込みハンドラを割り当てる
+   * @details
+   * ポート1の8ビットを出力モードにし、基準周波数を計算し、割り込みハンドラを割り当てる
    */
   static inline void init(TimerManager::TimerBase<uint16_t>& tim) {
     timer = &tim;
@@ -303,13 +309,14 @@ class CeraBuzzer {
    * @param hz 鳴らしたい周波数
    * @param duty_ratio デューティー比
    *
-   * @details デューティー比変えられたら面白いかなって思ったんですけど、音変わんなかったです。
+   * @details
+   * デューティー比変えられたら面白いかなって思ったんですけど、音変わんなかったです。
    * まあ波形確認してないんでコード間違えてるだけかもしれないですが。
    */
   inline void setHelz(float hz, uint8_t duty_ratio) {
     uint16_t temp = calcGeneralVal(hz);
-    timer->setGeneralB(temp);
-    timer->setGeneralA(temp * calcDutyRatio(duty_ratio));
+    timer->adaptGeneralB(temp);
+    timer->adaptGeneralA(temp * calcDutyRatio(duty_ratio));
   }
 
   /**

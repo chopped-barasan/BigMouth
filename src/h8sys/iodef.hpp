@@ -2,7 +2,7 @@
 
 #include "utils/types.hpp"
 
-namespace eommpsys {
+namespace h8mmpsys {
 
 namespace H8Reg {
 
@@ -1169,4 +1169,4 @@ inline st_smci& SMCI2 = *reinterpret_cast<st_smci*>(addr_smr2); /* SMCI2 */
 inline st_ad& AD = *reinterpret_cast<st_ad*>(addr_addrah);      /* A/D */
 
 }  // namespace H8Reg
-}  // namespace eommpsys
+}  // namespace h8mmpsys

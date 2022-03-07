@@ -1,6 +1,6 @@
 #include <cinttypes>
 
-namespace eommpsys {
+namespace h8mmpsys {
 
 inline void sleep(void) {
   asm("sleep");
@@ -22,4 +22,4 @@ inline unsigned char get_ccr(void) {
 
 constexpr uint64_t CPU_CLOCK = 25000000;
 
-}  // namespace eommpsys
+}  // namespace h8mmpsys

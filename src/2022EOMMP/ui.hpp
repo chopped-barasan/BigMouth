@@ -228,7 +228,7 @@ class CeraBuzzer {
    * @param source タイマーに設定されているクロックソース
    * @return float 基準の周波数
    */
-  static inline float calcBaseHz(clockSource_t source) {
+  static constexpr float calcBaseHz(const clockSource_t source) {
     float val = 0.0f;
     switch (source) {
       case Prescaler_1:
@@ -262,9 +262,10 @@ class CeraBuzzer {
    * @param hz
    * @return uint16_t コンペアマッチの値
    */
-  static inline uint16_t calcGeneralVal(float hz) {
+  static uint16_t calcGeneralVal(float hz) {
     return static_cast<uint16_t>(base_hz / hz);
   }
+
   static constexpr float calcDutyRatio(uint8_t val) {
     float temp = 0.0f;
     if (val <= 100) {

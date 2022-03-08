@@ -29,11 +29,11 @@ namespace TimerManager {
 template <typename T>
 class TimerBase {
  protected:
-  counterClearTrigger_t clear_cause;  // カウンタのクリア要因
-  clockEdge_t clock_edge;             // カウントエッジ
-  clockSource_t clock_source;         // クロックソース
-  T compare_a;                        // コンペアマッチAの値
-  T compare_b;                        // コンペアマッチBの値
+  const counterClearTrigger_t clear_cause;  // カウンタのクリア要因
+  const clockEdge_t clock_edge;             // カウントエッジ
+  const clockSource_t clock_source;         // クロックソース
+  T compare_a;                              // コンペアマッチAの値
+  T compare_b;                              // コンペアマッチBの値
 
   intrHandler_t handler_a;    // 割り込みハンドラA
   intrHandler_t handler_b;    // 割り込みハンドラB

@@ -26,7 +26,14 @@ class H8Motor {
   H8Motor() = default;
   ~H8Motor() = default;
 
-  inline void Start(uint16_t distance, uint16_t speed, bool reverse = false) {
+  /**
+   * @brief 回転を開始する
+   *
+   * @param degree 回転角度(degree)
+   * @param speed 回転速度 (degree/sec)
+   * @param reverse true: 逆回転, false: 正回転
+   */
+  inline void Start(uint16_t degree, uint16_t speed, bool reverse = false) {
     if (speed <= 0) {
       return;
     } else if (isRunning()) {
@@ -34,7 +41,7 @@ class H8Motor {
     }
 
     setSignalAbort(false);
-    Start_(distance, speed, reverse);
+    Start_(degree, speed, reverse);
 
     putRunning();
   }
@@ -83,48 +90,20 @@ class H8MotorR : public H8Motor {
   static inline auto& motor =
       *reinterpret_cast<union un_h8motr*>(H8Reg::addr_padr);
   static TimerManager::TimerBase<uint16_t>* timer;
-  static bool running;
-  static bool signal_abort;
+  static volatile bool running;
+  static volatile bool signal_abort;
 
   static volatile uint16_t target_val;
   static volatile uint16_t pulse_count;
-  static float constant;
+  static float base_hz;
 
-  static constexpr float diameter = 50.7f;
-  static constexpr float circle(void) { return diameter * 2 * M_PI; }
-  static constexpr float MovingDistanceByPulse(void) {
-    return circle() * 0.005f;
-  }
-  static inline float calcBaseHz(clockSource_t source) {
-    float val = 0.0f;
-    switch (source) {
-      case Prescaler_1:
-        val = static_cast<float>(CPU_CLOCK);
-        break;
-      case Prescaler_2:
-        val = static_cast<float>(CPU_CLOCK) / 2.0f;
-        break;
-      case Prescaler_4:
-        val = static_cast<float>(CPU_CLOCK) / 4.0f;
-        break;
-      case Prescaler_8:
-        val = static_cast<float>(CPU_CLOCK) / 8.0f;
-        break;
-      case Prescaler_64:
-        val = static_cast<float>(CPU_CLOCK) / 64.0f;
-        break;
-      case Prescaler_8192:
-        val = static_cast<float>(CPU_CLOCK) / 8192.0f;
-        break;
-      default:
-        val = 0.0f;
-        break;
-    }
-    return val;
-  }
-  static inline uint16_t calcCompareVal(uint16_t speed) {
-    return static_cast<uint16_t>(constant / speed);
-  }
+  // static constexpr float diameter = 50.7f;
+  // static constexpr float circle(void) { return diameter * 2 * M_PI; }
+  // static constexpr float MovingDistanceByPulse(void) {
+  //   return circle() * 0.005f;
+  // }
+  static constexpr float ROTATE_DEGREE_PER_PULSE = 360.0f / 200.0f;
+  static constexpr float calcBaseHz(const clockSource_t source);
 
   static void intrHandlerA(void);
   static void intrHandlerB(void);
@@ -135,9 +114,25 @@ class H8MotorR : public H8Motor {
   inline bool isRunning(void) override { return running; }
   inline bool isAborting(void) override { return signal_abort; }
 
-  void Start_(uint16_t distance, uint16_t speed, bool reverse = false) override;
+  /**
+   * @brief 回転を開始する
+   *
+   * @param degree 回転角度(degree)
+   * @param speed 回転速度 (degree/sec)
+   * @param reverse true: 逆回転, false: 正回転
+   */
+  void Start_(uint16_t degree, uint16_t speed, bool reverse = false) override;
   void Abort_(void) override;
   void ChangeSpeed_(uint16_t speed) override;
+
+  template <typename T>
+  static constexpr uint16_t calcCompareVal(T speed) {
+    return base_hz * (ROTATE_DEGREE_PER_PULSE / speed);
+  }
+  template <typename T>
+  static constexpr uint16_t calcPulseFromDegree(T degree) {
+    return static_cast<uint16_t>(degree / ROTATE_DEGREE_PER_PULSE);
+  }
 
   static inline void End(void) {
     running = false;
@@ -147,6 +142,84 @@ class H8MotorR : public H8Motor {
  public:
   H8MotorR() = default;
   ~H8MotorR() = default;
+
+  static void init(TimerManager::TimerBase<uint16_t>& tim);
+  static void enableMotor(bool flag = true) {
+#warning 試作ボード仕様になってます
+    if (flag) {
+      motor.enable = 0;
+      motor.phase = 1;  // 試作ボード
+    } else {
+      motor.enable = 1;
+      motor.phase = 0;  // 試作ボード
+    }
+  }
+};
+
+class H8MotorL : public H8Motor {
+ private:
+  union un_h8motl {
+    bitAccess_t<_BYTE, 0> enable;
+    bitAccess_t<_BYTE, 1> phase;
+    bitAccess_t<_BYTE, 5> step;
+    bitAccess_t<_BYTE, 7> dir;
+  };
+
+  static inline auto& motor =
+      *reinterpret_cast<union un_h8motl*>(H8Reg::addr_padr);
+  static TimerManager::TimerBase<uint16_t>* timer;
+  static volatile bool running;
+  static volatile bool signal_abort;
+
+  static volatile uint16_t target_val;
+  static volatile uint16_t pulse_count;
+  static float base_hz;
+
+  // static constexpr float diameter = 50.7f;
+  // static constexpr float circle(void) { return diameter * 2 * M_PI; }
+  // static constexpr float MovingDistanceByPulse(void) {
+  //   return circle() * 0.005f;
+  // }
+  static constexpr float ROTATE_DEGREE_PER_PULSE = 360.0f / 200.0f;
+  static constexpr float calcBaseHz(const clockSource_t source);
+
+  static void intrHandlerA(void);
+  static void intrHandlerB(void);
+
+  inline void putRunning(void) override { running = true; }
+  inline void setSignalAbort(bool flag) override { signal_abort = flag; }
+
+  inline bool isRunning(void) override { return running; }
+  inline bool isAborting(void) override { return signal_abort; }
+
+  /**
+   * @brief 回転を開始する
+   *
+   * @param degree 回転角度(degree)
+   * @param speed 回転速度 (degree/sec)
+   * @param reverse true: 逆回転, false: 正回転
+   */
+  void Start_(uint16_t degree, uint16_t speed, bool reverse = false) override;
+  void Abort_(void) override;
+  void ChangeSpeed_(uint16_t speed) override;
+
+  template <typename T>
+  static constexpr uint16_t calcCompareVal(T speed) {
+    return base_hz * (ROTATE_DEGREE_PER_PULSE / speed);
+  }
+  template <typename T>
+  static constexpr uint16_t calcPulseFromDegree(T degree) {
+    return static_cast<uint16_t>(degree / ROTATE_DEGREE_PER_PULSE);
+  }
+
+  static inline void End(void) {
+    running = false;
+    signal_abort = false;
+  }
+
+ public:
+  H8MotorL() = default;
+  ~H8MotorL() = default;
 
   static void init(TimerManager::TimerBase<uint16_t>& tim);
   static void enableMotor(bool flag = true) {

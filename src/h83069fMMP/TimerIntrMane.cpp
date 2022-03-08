@@ -45,8 +45,23 @@ void TimerCH0::start(void) {
   Timer0::startTimer();
 }
 
-void TimerCH0::stop(void) {
+void TimerCH0::restart(void) {
+  Peripherals::Timer0::startTimer();
+}
+
+void TimerCH0::pause(void) {
   Peripherals::Timer0::stopTimer();
+}
+
+void TimerCH0::stop(void) {
+  using namespace Peripherals;
+  Timer0::stopTimer();
+  handler_a = nullptr;
+  handler_b = nullptr;
+  handler_ovf = nullptr;
+  Timer0::setIntrHandlerA(nullptr);
+  Timer0::setIntrHandlerB(nullptr);
+  Timer0::setIntrHandlerOVF(nullptr);
 }
 
 void TimerCH1::adaptHandlerA(void) {
@@ -92,8 +107,23 @@ void TimerCH1::start(void) {
   Timer1::startTimer();
 }
 
-void TimerCH1::stop(void) {
+void TimerCH1::restart(void) {
+  Peripherals::Timer1::startTimer();
+}
+
+void TimerCH1::pause(void) {
   Peripherals::Timer1::stopTimer();
+}
+
+void TimerCH1::stop(void) {
+  using namespace Peripherals;
+  Timer1::stopTimer();
+  handler_a = nullptr;
+  handler_b = nullptr;
+  handler_ovf = nullptr;
+  Timer1::setIntrHandlerA(nullptr);
+  Timer1::setIntrHandlerB(nullptr);
+  Timer1::setIntrHandlerOVF(nullptr);
 }
 
 void TimerCH2::adaptHandlerA(void) {
@@ -139,8 +169,23 @@ void TimerCH2::start(void) {
   Timer2::startTimer();
 }
 
-void TimerCH2::stop(void) {
+void TimerCH2::restart(void) {
+  Peripherals::Timer2::startTimer();
+}
+
+void TimerCH2::pause(void) {
   Peripherals::Timer2::stopTimer();
+}
+
+void TimerCH2::stop(void) {
+  using namespace Peripherals;
+  Timer2::stopTimer();
+  handler_a = nullptr;
+  handler_b = nullptr;
+  handler_ovf = nullptr;
+  Timer2::setIntrHandlerA(nullptr);
+  Timer2::setIntrHandlerB(nullptr);
+  Timer2::setIntrHandlerOVF(nullptr);
 }
 
 void TMR23::adaptHandlerA(void) {
@@ -180,10 +225,29 @@ void TMR23::start(void) {
   TMR3::setClockSource(this->clock_source);
 }
 
-void TMR23::stop(void) {
+void TMR23::restart(void) {
+  using namespace Peripherals;
+  TMR2::setClockSource(Overflow);
+  TMR3::setClockSource(this->clock_source);
+}
+
+void TMR23::pause(void) {
   using namespace Peripherals;
   TMR2::stopTimer();
   TMR3::stopTimer();
 }
+
+void TMR23::stop(void) {
+  using namespace Peripherals;
+  TMR2::stopTimer();
+  TMR3::stopTimer();
+  handler_a = nullptr;
+  handler_b = nullptr;
+  handler_ovf = nullptr;
+  set_cmia2_handler(nullptr);
+  set_cmib2_handler(nullptr);
+  set_tovi2_handler(nullptr);
+}
+
 }  // namespace TimerManager
 }  // namespace eommpsys

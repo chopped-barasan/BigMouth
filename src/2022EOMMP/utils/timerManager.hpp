@@ -139,12 +139,22 @@ class TimerBase {
   inline clockSource_t getClockSource(void) const { return clock_source; }
 
   /**
-   * @brief タイマーのカウントを開始する。
+   * @brief タイマーの使用を開始する。
    *
    */
   virtual void start(void) = 0;
   /**
-   * @brief タイマーのカウントを停止する。
+   * @brief タイマーを再度開始する
+   *
+   */
+  virtual void restart(void) = 0;
+  /**
+   * @brief タイマーのカウントを一時停止する。
+   *
+   */
+  virtual void pause(void) = 0;
+  /**
+   * @brief タイマーの使用を停止する
    *
    */
   virtual void stop(void) = 0;

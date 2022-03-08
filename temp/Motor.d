@@ -7,7 +7,8 @@ temp/Motor.o: src/h83069fMMP/Motor.cpp src/h83069fMMP/Motor.hpp \
  src/h8sys/peripherals/8timer0.hpp src/h8sys/peripherals/8timer1.hpp \
  src/h8sys/peripherals/8timer2.hpp src/h8sys/peripherals/8timer3.hpp \
  src/h8sys/utils/utils.hpp src/2022EOMMP/utils/timerManager.hpp \
- src/2022EOMMP/utils.hpp src/2022EOMMP/utils/delay.hpp
+ src/2022EOMMP/utils.hpp src/2022EOMMP/utils/delay.hpp \
+ src/h83069fMMP/Types.hpp
 
 src/h83069fMMP/Motor.hpp:
 
@@ -50,3 +51,5 @@ src/2022EOMMP/utils/timerManager.hpp:
 src/2022EOMMP/utils.hpp:
 
 src/2022EOMMP/utils/delay.hpp:
+
+src/h83069fMMP/Types.hpp:

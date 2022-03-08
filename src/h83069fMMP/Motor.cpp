@@ -18,7 +18,7 @@ void H8MotorR::intrHandlerB(void) {
   motor.step = 0;
 
   if (++pulse_count >= target_val) {
-    timer->stop();
+    timer->pause();
     End();
   }
 }
@@ -51,21 +51,25 @@ constexpr float H8MotorR::calcBaseHz(const clockSource_t source) {
   return val;
 }
 
-void H8MotorR::Start_(uint16_t degree, uint16_t speed, bool reverse) {
+Result H8MotorR::Setup_(uint16_t degree, uint16_t speed, bool reverse) {
   uint16_t compare_val = calcCompareVal(speed);
   // target_val = static_cast<uint16_t>(degree / MovingDistanceByPulse());
   target_val = calcPulseFromDegree(degree);
   pulse_count = 0;
 
-  timer->setGeneralA(compare_val >> 1);
-  timer->setGeneralB(compare_val);
+  motor.dir = reverse ? 0 : 1;
 
-  timer->start();
+  timer->adaptGeneralA(compare_val >> 1);
+  timer->adaptGeneralB(compare_val);
+
+  timer->pause();
+
+  return Result::SUCCESS;
 }
 
 void H8MotorR::Abort_(void) {
-  timer->stop();
-  enableMotor(false);
+  timer->pause();
+  Enable(false);
 }
 
 void H8MotorR::ChangeSpeed_(uint16_t speed) {
@@ -84,8 +88,13 @@ void H8MotorR::init(TimerManager::TimerBase<uint16_t>& tim) {
   // constant = calcBaseHz(timer->getClockSource()) * MovingDistanceByPulse();
   base_hz = calcBaseHz(timer->getClockSource());
 
+  motor.phase = 0;
+
   timer->setHandlerA(H8MotorR::intrHandlerA, 0);
   timer->setHandlerB(H8MotorR::intrHandlerB, 0);
+
+  timer->start();
+  timer->pause();
 }
 
 /*   left side   */
@@ -106,7 +115,7 @@ void H8MotorL::intrHandlerB(void) {
   motor.step = 0;
 
   if (++pulse_count >= target_val) {
-    timer->stop();
+    timer->pause();
     End();
   }
 }
@@ -139,21 +148,25 @@ constexpr float H8MotorL::calcBaseHz(const clockSource_t source) {
   return val;
 }
 
-void H8MotorL::Start_(uint16_t degree, uint16_t speed, bool reverse) {
+Result H8MotorL::Setup_(uint16_t degree, uint16_t speed, bool reverse) {
   uint16_t compare_val = calcCompareVal(speed);
   // target_val = static_cast<uint16_t>(degree / MovingDistanceByPulse());
   target_val = calcPulseFromDegree(degree);
   pulse_count = 0;
 
-  timer->setGeneralA(compare_val >> 1);
-  timer->setGeneralB(compare_val);
+  motor.dir = reverse ? 0 : 1;
 
-  timer->start();
+  timer->adaptGeneralA(compare_val >> 1);
+  timer->adaptGeneralB(compare_val);
+
+  timer->pause();
+
+  return Result::SUCCESS;
 }
 
 void H8MotorL::Abort_(void) {
-  timer->stop();
-  enableMotor(false);
+  timer->pause();
+  Enable(false);
 }
 
 void H8MotorL::ChangeSpeed_(uint16_t speed) {
@@ -172,8 +185,13 @@ void H8MotorL::init(TimerManager::TimerBase<uint16_t>& tim) {
   // constant = calcBaseHz(timer->getClockSource()) * MovingDistanceByPulse();
   base_hz = calcBaseHz(timer->getClockSource());
 
+  motor.phase = 0;
+
   timer->setHandlerA(H8MotorL::intrHandlerA, 0);
   timer->setHandlerB(H8MotorL::intrHandlerB, 0);
+
+  timer->start();
+  timer->pause();
 }
 
 }  // namespace eommpsys

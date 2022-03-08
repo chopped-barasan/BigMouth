@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/src/h8sys/**",
+                "${workspaceFolder}/src/2022EOMMP/**",
+                "${workspaceFolder}/include/**"
+
+            ],
+            "defines": [],
+            "compilerPath": "/usr/local/h8300-elf/bin/h8300-elf-g++",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}

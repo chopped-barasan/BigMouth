@@ -314,7 +314,7 @@ class CeraBuzzer {
    * デューティー比変えられたら面白いかなって思ったんですけど、音変わんなかったです。
    * まあ波形確認してないんでコード間違えてるだけかもしれないですが。
    */
-  inline void setHelz(float hz, uint8_t duty_ratio) {
+  inline void setHelz(float hz, uint8_t duty_ratio = 50) {
     uint16_t temp = calcGeneralVal(hz);
     timer->adaptGeneralB(temp);
     timer->adaptGeneralA(temp * calcDutyRatio(duty_ratio));
@@ -331,7 +331,7 @@ class CeraBuzzer {
    */
   inline void mute(void) {
     handlerOff();
-    timer->stop();
+    timer->pause();
   }
 };
 

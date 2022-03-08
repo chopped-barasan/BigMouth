@@ -10,6 +10,7 @@
 #pragma once
 
 #include <eommpsys>
+#include "utils.hpp"
 #include "utils/timerManager.hpp"
 
 using namespace h8mmpsys;
@@ -56,7 +57,7 @@ class MonLed {
    *
    * @details ポート1の1~3ビットを出力モードにする
    */
-  static inline void init(void) { H8Reg::P1DDR |= 0x07; }
+  static inline void Init(void) { H8Reg::P1DDR |= 0x07; }
 
   /**
    * @brief 左LEDの制御関数。
@@ -135,7 +136,7 @@ class TactSwitch {
    * @details
    * ポート5の1ビットを入力モードにし、内部プルアップモードをオンにする。
    */
-  static inline void init(void) {
+  static inline void Init(void) {
     H8Reg::P5DDR &= ~(0x01);
     H8Reg::P5PCR.BIT.B0 = 1;
   }
@@ -189,7 +190,7 @@ class SlideSwitch {
    * @details
    * ポート5の3ビットを入力モードにし、内部プルアップモードをオンにする。
    */
-  static inline void init(void) {
+  static inline void Init(void) {
     H8Reg::P5DDR &= ~(0x04);
     H8Reg::P5PCR.BIT.B2 = 1;
   }
@@ -222,39 +223,6 @@ class CeraBuzzer {
   static void handlerOn(void) { H8Reg::P1DR.BIT.B7 = 1; }  // 割り込みハンドラA
   static void handlerOff(void) { H8Reg::P1DR.BIT.B7 = 0; }  // 割り込みハンドラB
 
-  /**
-   * @brief 基準となる周波数を計算する。
-   *
-   * @param source タイマーに設定されているクロックソース
-   * @return float 基準の周波数
-   */
-  static constexpr float calcBaseHz(const clockSource_t source) {
-    float val = 0.0f;
-    switch (source) {
-      case Prescaler_1:
-        val = static_cast<float>(CPU_CLOCK);
-        break;
-      case Prescaler_2:
-        val = static_cast<float>(CPU_CLOCK) / 2.0f;
-        break;
-      case Prescaler_4:
-        val = static_cast<float>(CPU_CLOCK) / 4.0f;
-        break;
-      case Prescaler_8:
-        val = static_cast<float>(CPU_CLOCK) / 8.0f;
-        break;
-      case Prescaler_64:
-        val = static_cast<float>(CPU_CLOCK) / 64.0f;
-        break;
-      case Prescaler_8192:
-        val = static_cast<float>(CPU_CLOCK) / 8192.0f;
-        break;
-      default:
-        val = 0.0f;
-        break;
-    }
-    return val;
-  }
   /**
    * @brief
    * 鳴らしたい周波数から16bitタイマーのコンペアマッチに設定するべき値を計算する。
@@ -297,10 +265,10 @@ class CeraBuzzer {
    * @details
    * ポート1の8ビットを出力モードにし、基準周波数を計算し、割り込みハンドラを割り当てる
    */
-  static inline void init(TimerManager::TimerBase<uint16_t>& tim) {
+  static inline void Init(TimerManager::TimerBase<uint16_t>& tim) {
     timer = &tim;
     H8Reg::P1DDR |= 0x80;
-    base_hz = calcBaseHz(timer->getClockSource());
+    base_hz = utils::CalcClockFreq(timer->getClockSource());
     timer->setHandlerA(handlerOn, 14204);
     timer->setHandlerB(handlerOff, 28409);
   }

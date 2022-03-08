@@ -2,23 +2,22 @@
 
 #include <cmath>
 #include "TimerIntrMane.hpp"
-
-#define M_PI 3.14159265358979323846
+#include "Types.hpp"
 
 namespace eommpsys {
 
 class H8Motor {
  private:
-  virtual void putRunning(void) = 0;
-  virtual void setSignalAbort(bool) = 0;
+  virtual void PutRunning(void) = 0;
+  virtual void SetSignalAbort(bool) = 0;
 
  protected:
-  virtual bool isRunning(void) = 0;
-  virtual bool isAborting(void) = 0;
+  virtual bool IsRunning(void) = 0;
+  virtual bool IsAborting(void) = 0;
 
-  virtual void Start_(uint16_t distance,
-                      uint16_t speed,
-                      bool reverse = false) = 0;
+  virtual Result Setup_(uint16_t distance,
+                        uint16_t speed,
+                        bool reverse = false) = 0;
   virtual void Abort_(void) = 0;
   virtual void ChangeSpeed_(uint16_t speed) = 0;
 
@@ -26,6 +25,7 @@ class H8Motor {
   H8Motor() = default;
   ~H8Motor() = default;
 
+  virtual void Start(void) = 0;
   /**
    * @brief 回転を開始する
    *
@@ -33,49 +33,61 @@ class H8Motor {
    * @param speed 回転速度 (degree/sec)
    * @param reverse true: 逆回転, false: 正回転
    */
-  inline void Start(uint16_t degree, uint16_t speed, bool reverse = false) {
+  inline Result Setup(uint16_t degree, uint16_t speed, bool reverse = false) {
+    Result result;
+
     if (speed <= 0) {
-      return;
-    } else if (isRunning()) {
-      return;
+      return Result::INVALID_SPEED;
+    } else if (IsRunning()) {
+      return Result::RUNNING;
     }
 
-    setSignalAbort(false);
-    Start_(degree, speed, reverse);
+    SetSignalAbort(false);
+    result = Setup_(degree, speed, reverse);
 
-    putRunning();
+    if (result == Result::SUCCESS) {
+      PutRunning();
+    }
+
+    return result;
   }
 
-  inline void Abort() {
-    if (isRunning() == false) {
-      return;  // halted
-    } else if (isAborting()) {
-      return;  // aborting
+  inline Result Abort() {
+    if (IsRunning() == false) {
+      return Result::HALTED;  // halted
+    } else if (IsAborting()) {
+      return Result::ABORTING;  // aborting
     }
 
-    setSignalAbort(true);
+    SetSignalAbort(true);
     Abort_();
+
+    return Result::SUCCESS;
   }
 
-  inline void ChangeSpeed(uint16_t speed) {
+  inline Result ChangeSpeed(uint16_t speed) {
     if (speed <= 0) {
-      return;  // invalid speed
-    } else if (isRunning() == false) {
-      return;  // halted
-    } else if (isAborting()) {
-      return;  // aborting
+      return Result::INVALID_SPEED;  // invalid speed
+    } else if (IsRunning() == false) {
+      return Result::HALTED;  // halted
+    } else if (IsAborting()) {
+      return Result::ABORTING;  // aborting
     }
 
     ChangeSpeed_(speed);
+
+    return Result::SUCCESS;
   }
 
-  inline bool CheckEnd() {
-    if (isRunning()) {
-      return false;  // running
+  inline Result CheckEnd() {
+    if (IsRunning()) {
+      return Result::RUNNING;  // running
     } else {
-      return true;  // halted
+      return Result::HALTED;  // halted
     }
   }
+
+  virtual void Enable(bool) = 0;
 };
 
 class H8MotorR : public H8Motor {
@@ -95,24 +107,18 @@ class H8MotorR : public H8Motor {
 
   static volatile uint16_t target_val;
   static volatile uint16_t pulse_count;
-  static float base_hz;
+  static uint32_t base_hz;
 
-  // static constexpr float diameter = 50.7f;
-  // static constexpr float circle(void) { return diameter * 2 * M_PI; }
-  // static constexpr float MovingDistanceByPulse(void) {
-  //   return circle() * 0.005f;
-  // }
   static constexpr float ROTATE_DEGREE_PER_PULSE = 360.0f / 200.0f;
-  static constexpr float calcBaseHz(const clockSource_t source);
 
   static void intrHandlerA(void);
   static void intrHandlerB(void);
 
-  inline void putRunning(void) override { running = true; }
-  inline void setSignalAbort(bool flag) override { signal_abort = flag; }
+  inline void PutRunning(void) override { running = true; }
+  inline void SetSignalAbort(bool flag) override { signal_abort = flag; }
 
-  inline bool isRunning(void) override { return running; }
-  inline bool isAborting(void) override { return signal_abort; }
+  inline bool IsRunning(void) override { return running; }
+  inline bool IsAborting(void) override { return signal_abort; }
 
   /**
    * @brief 回転を開始する
@@ -121,16 +127,16 @@ class H8MotorR : public H8Motor {
    * @param speed 回転速度 (degree/sec)
    * @param reverse true: 逆回転, false: 正回転
    */
-  void Start_(uint16_t degree, uint16_t speed, bool reverse = false) override;
+  Result Setup_(uint16_t degree, uint16_t speed, bool reverse = false) override;
   void Abort_(void) override;
   void ChangeSpeed_(uint16_t speed) override;
 
   template <typename T>
-  static constexpr uint16_t calcCompareVal(T speed) {
-    return base_hz * (ROTATE_DEGREE_PER_PULSE / speed);
+  static uint16_t CalcCompareVal(const T speed) {
+    return base_hz * (speed / ROTATE_DEGREE_PER_PULSE);
   }
   template <typename T>
-  static constexpr uint16_t calcPulseFromDegree(T degree) {
+  static uint16_t CalcPulseFromDegree(const T degree) {
     return static_cast<uint16_t>(degree / ROTATE_DEGREE_PER_PULSE);
   }
 
@@ -143,8 +149,9 @@ class H8MotorR : public H8Motor {
   H8MotorR() = default;
   ~H8MotorR() = default;
 
-  static void init(TimerManager::TimerBase<uint16_t>& tim);
-  static void enableMotor(bool flag = true) {
+  inline void Start(void) override { timer->restart(); }
+  static void Init(TimerManager::TimerBase<uint16_t>& tim);
+  void Enable(bool flag = true) override {
 #warning 試作ボード仕様になってます
     if (flag) {
       motor.enable = 0;
@@ -173,24 +180,18 @@ class H8MotorL : public H8Motor {
 
   static volatile uint16_t target_val;
   static volatile uint16_t pulse_count;
-  static float base_hz;
+  static uint32_t base_hz;
 
-  // static constexpr float diameter = 50.7f;
-  // static constexpr float circle(void) { return diameter * 2 * M_PI; }
-  // static constexpr float MovingDistanceByPulse(void) {
-  //   return circle() * 0.005f;
-  // }
   static constexpr float ROTATE_DEGREE_PER_PULSE = 360.0f / 200.0f;
-  static constexpr float calcBaseHz(const clockSource_t source);
 
   static void intrHandlerA(void);
   static void intrHandlerB(void);
 
-  inline void putRunning(void) override { running = true; }
-  inline void setSignalAbort(bool flag) override { signal_abort = flag; }
+  inline void PutRunning(void) override { running = true; }
+  inline void SetSignalAbort(bool flag) override { signal_abort = flag; }
 
-  inline bool isRunning(void) override { return running; }
-  inline bool isAborting(void) override { return signal_abort; }
+  inline bool IsRunning(void) override { return running; }
+  inline bool IsAborting(void) override { return signal_abort; }
 
   /**
    * @brief 回転を開始する
@@ -199,16 +200,16 @@ class H8MotorL : public H8Motor {
    * @param speed 回転速度 (degree/sec)
    * @param reverse true: 逆回転, false: 正回転
    */
-  void Start_(uint16_t degree, uint16_t speed, bool reverse = false) override;
+  Result Setup_(uint16_t degree, uint16_t speed, bool reverse = false) override;
   void Abort_(void) override;
   void ChangeSpeed_(uint16_t speed) override;
 
   template <typename T>
-  static constexpr uint16_t calcCompareVal(T speed) {
-    return base_hz * (ROTATE_DEGREE_PER_PULSE / speed);
+  static uint16_t CalcCompareVal(const T speed) {
+    return base_hz * (speed / ROTATE_DEGREE_PER_PULSE);
   }
   template <typename T>
-  static constexpr uint16_t calcPulseFromDegree(T degree) {
+  static uint16_t CalcPulseFromDegree(const T degree) {
     return static_cast<uint16_t>(degree / ROTATE_DEGREE_PER_PULSE);
   }
 
@@ -221,8 +222,9 @@ class H8MotorL : public H8Motor {
   H8MotorL() = default;
   ~H8MotorL() = default;
 
-  static void init(TimerManager::TimerBase<uint16_t>& tim);
-  static void enableMotor(bool flag = true) {
+  inline void Start(void) { timer->restart(); }
+  static void Init(TimerManager::TimerBase<uint16_t>& tim);
+  void Enable(bool flag = true) override {
 #warning 試作ボード仕様になってます
     if (flag) {
       motor.enable = 0;

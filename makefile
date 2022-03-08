@@ -38,7 +38,7 @@ clean:
 
 .PHONY: write
 write:
-	sudo chmod 666 /dev/ttyUSB1
-	kz_h8write -3069 -f25 -d $(BUILD_DIR)/$(TARGET).mot /dev/ttyUSB1
+	sudo chmod 666 /dev/ttyUSB0
+	kz_h8write -3069 -f25 -d $(BUILD_DIR)/$(TARGET).mot /dev/ttyUSB0
 
 -include $(DEPS)

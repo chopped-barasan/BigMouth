@@ -20,6 +20,6 @@ inline unsigned char get_ccr(void) {
   return (value);
 }
 
-constexpr uint64_t CPU_CLOCK = 25000000;
+constexpr uint32_t CPU_CLOCK = 25000000;
 
 }  // namespace h8mmpsys

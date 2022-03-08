@@ -71,7 +71,7 @@ class Time {
    * @param tim
    * 使用するタイマーオブジェクト(分周なしか8分周の設定をしたものを使用してください)
    */
-  static void init(TimerManager::TimerBase<uint16_t>& tim) {
+  static void Init(TimerManager::TimerBase<uint16_t>& tim) {
     timer = &tim;
     timer->setHandlerA(Time::delayHandler,
                        calcCompareNum(timer->getClockSource()));
@@ -82,15 +82,15 @@ class Time {
    *
    * @return uint64_t プログラムの経過時間(ms)
    */
-  static inline uint64_t getCurrentTime(void) { return current_time; }
+  static inline uint64_t GetCurrentTime(void) { return current_time; }
   /**
    * @brief 指定した時間待機します。
    *
    * @param ms 待機時間(ms)
    */
-  static void delay(uint64_t ms) {
-    uint64_t start_time = getCurrentTime();
-    while (getCurrentTime() - start_time < ms)
+  static void Delay(uint64_t ms) {
+    uint64_t start_time = GetCurrentTime();
+    while (GetCurrentTime() - start_time < ms)
       ;
   }
 };

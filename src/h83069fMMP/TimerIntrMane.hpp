@@ -17,7 +17,9 @@ class TimerCH0 final : public TimerBase<uint16_t> {
 
  public:
   void start(void) override;
-  inline void stop(void) override;
+  inline void restart(void) override;
+  inline void pause(void) override;
+  void stop(void) override;
 
   inline void adaptGeneralA(uint16_t val) override {
     Peripherals::Timer0::setGRA(val);
@@ -48,7 +50,9 @@ class TimerCH1 final : public TimerBase<uint16_t> {
 
  public:
   void start(void) override;
-  inline void stop(void) override;
+  inline void restart(void) override;
+  inline void pause(void) override;
+  void stop(void) override;
 
   inline void adaptGeneralA(uint16_t val) override {
     Peripherals::Timer1::setGRA(val);
@@ -79,7 +83,9 @@ class TimerCH2 final : public TimerBase<uint16_t> {
 
  public:
   void start(void) override;
-  inline void stop(void) override;
+  inline void restart(void) override;
+  inline void pause(void) override;
+  void stop(void) override;
 
   inline void adaptGeneralA(uint16_t val) override {
     Peripherals::Timer2::setGRA(val);
@@ -114,7 +120,9 @@ class TMR23 final : public TimerBase<uint16_t> {
 
  public:
   void start(void) override;
-  inline void stop(void) override;
+  inline void restart(void) override;
+  inline void pause(void) override;
+  void stop(void) override;
 
   inline void adaptGeneralA(uint16_t val) override { H8Reg::TMR23.TCORA = val; }
   inline void adaptGeneralB(uint16_t val) override { H8Reg::TMR23.TCORB = val; }

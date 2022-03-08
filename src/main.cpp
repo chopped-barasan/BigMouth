@@ -19,9 +19,6 @@ int main(void) {
   ui::MonLed moniter_led;
   ui::MonLed::init();
 
-  // ui::TactSwitch tact;
-  // ui::TactSwitch::init();
-
   H8MotorR motor_r;
   H8MotorR::init(timer1);
   H8MotorL motor_l;

@@ -271,6 +271,8 @@ class CeraBuzzer {
     base_hz = utils::CalcClockFreq(timer->getClockSource());
     timer->setHandlerA(handlerOn, 14204);
     timer->setHandlerB(handlerOff, 28409);
+    timer->start();
+    timer->pause();
   }
   /**
    * @brief 周波数とデューティー比を設定する。
@@ -292,14 +294,14 @@ class CeraBuzzer {
    * @brief 音を鳴らし始める。
    *
    */
-  inline void start(void) { timer->start(); }
+  inline void start(void) { timer->restart(); }
   /**
    * @brief 音を止める。
    *
    */
   inline void mute(void) {
     handlerOff();
-    timer->stop();
+    timer->pause();
   }
 };
 

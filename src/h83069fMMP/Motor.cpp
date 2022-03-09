@@ -65,7 +65,9 @@ void H8MotorR::Init(TimerManager::TimerBase<uint16_t>& tim) {
   // constant = calcBaseHz(timer->getClockSource()) * MovingDistanceByPulse();
   base_hz = utils::CalcClockFreq(timer->getClockSource());
 
-  motor.phase = 0;  // full phase
+  // motor.phase = 0;  // full phase
+  motor.phase = 1;  // half phase
+  motor.enable = 1;
 
   timer->setHandlerA(H8MotorR::intrHandlerA, 0);
   timer->setHandlerB(H8MotorR::intrHandlerB, 0);
@@ -139,13 +141,19 @@ void H8MotorL::Init(TimerManager::TimerBase<uint16_t>& tim) {
   // constant = calcBaseHz(timer->getClockSource()) * MovingDistanceByPulse();
   base_hz = utils::CalcClockFreq(timer->getClockSource());
 
-  motor.phase = 0;  // full phase
+  // motor.phase = 0;  // full phase
+  motor.phase = 1;  // half phase
+  motor.enable = 1;
 
   timer->setHandlerA(H8MotorL::intrHandlerA, 0);
   timer->setHandlerB(H8MotorL::intrHandlerB, 0);
 
   timer->start();
   timer->pause();
+}
+
+Result Stop(void) {
+  return Result::SUCCESS;
 }
 
 }  // namespace eommpsys

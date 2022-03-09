@@ -102,6 +102,7 @@ class H8MotorR : public H8Motor {
   static inline auto& motor =
       *reinterpret_cast<union un_h8motr*>(H8Reg::addr_padr);
   static TimerManager::TimerBase<uint16_t>* timer;
+
   static volatile bool running;
   static volatile bool signal_abort;
 
@@ -109,7 +110,10 @@ class H8MotorR : public H8Motor {
   static volatile uint16_t pulse_count;
   static uint32_t base_hz;
 
-  static constexpr float ROTATE_DEGREE_PER_PULSE = 360.0f / 200.0f;
+  // static constexpr float ROTATE_DEGREE_PER_PULSE = 360.0f / 200.0f;   // full
+  // phase
+  static constexpr float ROTATE_DEGREE_PER_PULSE =
+      360.0f / 400.0f;  // half phase
 
   static void intrHandlerA(void);
   static void intrHandlerB(void);
@@ -133,7 +137,7 @@ class H8MotorR : public H8Motor {
 
   template <typename T>
   static uint16_t CalcCompareVal(const T speed) {
-    return base_hz * (speed / ROTATE_DEGREE_PER_PULSE);
+    return base_hz * (ROTATE_DEGREE_PER_PULSE / speed);
   }
   template <typename T>
   static uint16_t CalcPulseFromDegree(const T degree) {
@@ -152,13 +156,13 @@ class H8MotorR : public H8Motor {
   inline void Start(void) override { timer->restart(); }
   static void Init(TimerManager::TimerBase<uint16_t>& tim);
   void Enable(bool flag = true) override {
-#warning 試作ボード仕様になってます
+    // #warning 試作ボード仕様になってます
     if (flag) {
       motor.enable = 0;
-      motor.phase = 1;  // 試作ボード
+      // motor.phase = 1;  // 試作ボード
     } else {
       motor.enable = 1;
-      motor.phase = 0;  // 試作ボード
+      // motor.phase = 0;  // 試作ボード
     }
   }
 };
@@ -182,7 +186,10 @@ class H8MotorL : public H8Motor {
   static volatile uint16_t pulse_count;
   static uint32_t base_hz;
 
-  static constexpr float ROTATE_DEGREE_PER_PULSE = 360.0f / 200.0f;
+  // static constexpr float ROTATE_DEGREE_PER_PULSE = 360.0f / 200.0f; // full
+  // phase
+  static constexpr float ROTATE_DEGREE_PER_PULSE =
+      360.0f / 400.0f;  // half phase
 
   static void intrHandlerA(void);
   static void intrHandlerB(void);
@@ -206,7 +213,7 @@ class H8MotorL : public H8Motor {
 
   template <typename T>
   static uint16_t CalcCompareVal(const T speed) {
-    return base_hz * (speed / ROTATE_DEGREE_PER_PULSE);
+    return base_hz * (ROTATE_DEGREE_PER_PULSE / speed);
   }
   template <typename T>
   static uint16_t CalcPulseFromDegree(const T degree) {
@@ -225,13 +232,13 @@ class H8MotorL : public H8Motor {
   inline void Start(void) { timer->restart(); }
   static void Init(TimerManager::TimerBase<uint16_t>& tim);
   void Enable(bool flag = true) override {
-#warning 試作ボード仕様になってます
+    // #warning 試作ボード仕様になってます
     if (flag) {
       motor.enable = 0;
-      motor.phase = 1;  // 試作ボード
+      // motor.phase = 1;  // 試作ボード
     } else {
       motor.enable = 1;
-      motor.phase = 0;  // 試作ボード
+      // motor.phase = 0;  // 試作ボード
     }
   }
 };

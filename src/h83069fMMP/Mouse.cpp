@@ -2,9 +2,10 @@
 
 using namespace eommpsys;
 
-Result H8MouseMovementController::Advance(uint16_t distance, uint16_t speed) {
-  const uint16_t movement_range = distance / DISTANCE_PER_DEGREE;
-  const uint16_t wheel_speed = speed / DISTANCE_PER_DEGREE;  // degree per sec
+Result H8Mouse::Advance(uint16_t distance, uint16_t speed) {
+  const uint16_t movement_range = distance / utils::DISTANCE_PER_DEGREE;
+  const uint16_t wheel_speed =
+      speed / utils::DISTANCE_PER_DEGREE;  // degree per sec
   Result left_stats, right_stats;
 
   if (nullptr == motor_left || nullptr == motor_right) {
@@ -31,14 +32,15 @@ Result H8MouseMovementController::Advance(uint16_t distance, uint16_t speed) {
   return Result::SUCCESS;
 }
 
-Result H8MouseMovementController::Spinturn(uint16_t speed,
-                                           Direction direction) {
+Result H8Mouse::Spinturn(uint16_t speed, Direction direction) {
   // constexpr uint16_t movement_range =
-  //     static_cast<uint16_t>(TURNING_CIRCUMFERENCE / DISTANCE_PER_DEGREE) / 4;
+  //     static_cast<uint16_t>(utils::TURNING_CIRCUMFERENCE /
+  //                           utils::DISTANCE_PER_DEGREE) /
+  //     4;
   constexpr uint16_t movement_range =
-      (utils::DegreeToRadian<float>(90) * static_cast<uint16_t>(TRED / 2)) /
-      DISTANCE_PER_DEGREE;
-  uint16_t wheel_speed = speed * DISTANCE_PER_DEGREE;
+      (utils::DegreeToRadian<float>(90) * (utils::TRED / 2.0f)) /
+      utils::DISTANCE_PER_DEGREE;
+  uint16_t wheel_speed = speed / utils::DISTANCE_PER_DEGREE;
   Result left_stats, right_stats;
 
   if (motor_left == nullptr || motor_right == nullptr) {

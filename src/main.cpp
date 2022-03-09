@@ -55,7 +55,7 @@ int main(void) {
       Time::Delay(450);
     }
 
-    result = mouse.Move<360, 550, 360, 550>(false, false);
+    result = mouse.AutoPilot();
 
     if (result == Result::SUCCESS) {
       for (volatile uint16_t i = 0; i < 2; i++) {

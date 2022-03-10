@@ -43,31 +43,46 @@ int main(void) {
 
   // uint16_t speed = 100;
   while (true) {
-    Result result;
-
+    volatile uint16_t i = 0;
+    Result result = Result::UNKNOWN_ERROR;
     while (tact != ui::TactSwitch::ON)
       ;
 
-    for (volatile uint16_t i = 0; i < 3; i++) {
+    for (i = 0; i < 3; i++) {
       buzzer.start();
       Time::Delay(50);
       buzzer.mute();
       Time::Delay(450);
     }
 
-    result = mouse.AutoPilot();
+    for (i = 0; i < 8; i++) {
+      result = mouse.Advance<160, 600>();
+      Time::Delay(20);
+      if (result != Result::SUCCESS) {
+        break;
+      }
+    }
+
+    mouse.Neutral();
 
     if (result == Result::SUCCESS) {
-      for (volatile uint16_t i = 0; i < 2; i++) {
+      for (i = 0; i < 2; i++) {
         buzzer.start();
         Time::Delay(50);
         buzzer.mute();
         Time::Delay(200);
       }
-    } else {
+    } else if (result == Result::RUNNING) {
       buzzer.start();
       Time::Delay(1000);
       buzzer.mute();
+    } else {
+      for (i = 0; i < 2; i++) {
+        buzzer.start();
+        Time::Delay(500);
+        buzzer.mute();
+        Time::Delay(50);
+      }
     }
   }
 

@@ -26,6 +26,7 @@ class H8Motor {
   ~H8Motor() = default;
 
   virtual void Start(void) = 0;
+  virtual void Brake(void) = 0;
   /**
    * @brief 回転を開始する
    *
@@ -154,6 +155,7 @@ class H8MotorR : public H8Motor {
   ~H8MotorR() = default;
 
   inline void Start(void) override { timer->restart(); }
+  inline void Brake(void) override { timer->pause(); }
   static void Init(TimerManager::TimerBase<uint16_t>& tim);
   void Enable(bool flag = true) override {
     // #warning 試作ボード仕様になってます
@@ -230,6 +232,7 @@ class H8MotorL : public H8Motor {
   ~H8MotorL() = default;
 
   inline void Start(void) { timer->restart(); }
+  inline void Brake(void) { timer->pause(); }
   static void Init(TimerManager::TimerBase<uint16_t>& tim);
   void Enable(bool flag = true) override {
     // #warning 試作ボード仕様になってます

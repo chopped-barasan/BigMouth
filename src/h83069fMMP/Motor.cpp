@@ -152,8 +152,4 @@ void H8MotorL::Init(TimerManager::TimerBase<uint16_t>& tim) {
   timer->pause();
 }
 
-Result Stop(void) {
-  return Result::SUCCESS;
-}
-
 }  // namespace eommpsys

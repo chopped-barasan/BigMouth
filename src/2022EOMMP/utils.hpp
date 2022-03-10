@@ -9,17 +9,6 @@ namespace utils {
 template <typename T>
 constexpr T PI = 3.14159265358979323846;
 
-constexpr float WHEEL_DIAMETER = 50.7f;
-constexpr float TRED = 80.0f;
-constexpr float WHEEL_CIRCUMFERENCE = WHEEL_DIAMETER * PI<float>;
-constexpr float DISTANCE_PER_DEGREE = WHEEL_CIRCUMFERENCE / 360.0f;
-// constexpr float DISTANCE_PER_PULSE = WHEEL_CIRCUMFERENCE / 200.0f;
-// full phase
-constexpr float DISTANCE_PER_PULSE =
-    WHEEL_CIRCUMFERENCE / 400.0f;  // half phase
-
-constexpr float TURNING_CIRCUMFERENCE = TRED * PI<float>;
-
 template <typename T, typename U>
 constexpr T DegreeToRadian(U degree) {
   return degree * PI<T> / static_cast<T>(180);
@@ -28,13 +17,14 @@ constexpr T DegreeToRadian(U degree) {
 constexpr float CalcDiameter(uint16_t radius, uint16_t degree = 360) {
   return DegreeToRadian<float>(degree) * static_cast<float>(radius);
 }
-constexpr float calcCurveTime(uint16_t degree,
+
+constexpr float CalcCurveTime(uint16_t degree,
                               uint16_t radius,
                               uint16_t speed) {
   return (DegreeToRadian<float>(degree) * radius) / static_cast<float>(speed);
 }
 
-constexpr auto CalcClockFreq(clockSource_t source) {
+constexpr uint32_t CalcClockFreq(clockSource_t source) {
   uint32_t val = 0;
   switch (source) {
     case Prescaler_1:

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <cmath>
+#include <math.h>
 #include "TimerIntrMane.hpp"
 #include "Types.hpp"
 
@@ -125,7 +125,7 @@ class H8MotorR : public H8Motor {
   inline bool IsAborting(void) override { return signal_abort; }
 
   /**
-   * @brief 回転を開始する
+   * @brief 回転準備
    *
    * @param degree 回転角度(degree)
    * @param speed 回転速度 (degree/sec)

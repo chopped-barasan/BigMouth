@@ -1,4 +1,4 @@
-temp/Mouse.o: src/h83069fMMP/Mouse.cpp src/h83069fMMP/Mouse.hpp \
+temp/MovementController.o: src/h83069fMMP/MovementController.cpp \
  src/h83069fMMP/MovementController.hpp src/h83069fMMP/Info.hpp \
  src/2022EOMMP/2022EOMMP src/2022EOMMP/ui.hpp src/h8sys/eommpsys \
  include/3069.h src/h8sys/iodef.hpp src/h8sys/utils/types.hpp \
@@ -10,8 +10,6 @@ temp/Mouse.o: src/h83069fMMP/Mouse.cpp src/h83069fMMP/Mouse.hpp \
  src/2022EOMMP/utils.hpp src/2022EOMMP/utils/delay.hpp \
  src/2022EOMMP/utils/timerManager.hpp src/h83069fMMP/Motor.hpp \
  src/h83069fMMP/TimerIntrMane.hpp src/h83069fMMP/Types.hpp
-
-src/h83069fMMP/Mouse.hpp:
 
 src/h83069fMMP/MovementController.hpp:
 

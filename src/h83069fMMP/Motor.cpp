@@ -5,6 +5,7 @@ namespace eommpsys {
 TimerManager::TimerBase<uint16_t>* H8MotorR::timer = nullptr;
 volatile bool H8MotorR::running = false;
 volatile bool H8MotorR::signal_abort = false;
+volatile bool H8MotorR::on_center = false;
 
 volatile uint16_t H8MotorR::target_val = 0;
 volatile uint16_t H8MotorR::pulse_count = 0;
@@ -12,6 +13,10 @@ uint32_t H8MotorR::base_hz = 0;
 
 void H8MotorR::intrHandlerA(void) {
   motor.step = 1;
+
+  if (pulse_count == target_val / 2) {
+    on_center = true;
+  }
 }
 
 void H8MotorR::intrHandlerB(void) {
@@ -81,6 +86,7 @@ void H8MotorR::Init(TimerManager::TimerBase<uint16_t>& tim) {
 TimerManager::TimerBase<uint16_t>* H8MotorL::timer = nullptr;
 volatile bool H8MotorL::running = false;
 volatile bool H8MotorL::signal_abort = false;
+volatile bool H8MotorL::on_center = false;
 
 volatile uint16_t H8MotorL::target_val = 0;
 volatile uint16_t H8MotorL::pulse_count = 0;
@@ -88,6 +94,10 @@ uint32_t H8MotorL::base_hz = 0;
 
 void H8MotorL::intrHandlerA(void) {
   motor.step = 1;
+
+  if (pulse_count == target_val / 2) {
+    on_center = true;
+  }
 }
 
 void H8MotorL::intrHandlerB(void) {

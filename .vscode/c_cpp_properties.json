@@ -3,7 +3,12 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/src/**",
+                "${workspaceFolder}/src/h8sys/**",
+                "${workspaceFolder}/src/2022EOMMP/**",
+                "${workspaceFolder}/src/h83069fMMP/**",
+                "${workspaceFolder}/include/**"
             ],
             "defines": [],
             "compilerPath": "/usr/local/h8300-elf/bin/h8300-elf-g++",

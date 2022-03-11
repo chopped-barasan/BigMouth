@@ -9,7 +9,7 @@ temp/main.o: src/main.cpp src/2022EOMMP/2022EOMMP src/2022EOMMP/ui.hpp \
  src/2022EOMMP/utils/delay.hpp src/2022EOMMP/utils/timerManager.hpp \
  src/h83069fMMP/Motor.hpp src/h83069fMMP/TimerIntrMane.hpp \
  src/h83069fMMP/Types.hpp src/h83069fMMP/Mouse.hpp \
- src/h83069fMMP/MachineInfo.hpp
+ src/h83069fMMP/MovementController.hpp src/h83069fMMP/Info.hpp
 
 src/2022EOMMP/2022EOMMP:
 
@@ -57,4 +57,6 @@ src/h83069fMMP/Types.hpp:
 
 src/h83069fMMP/Mouse.hpp:
 
-src/h83069fMMP/MachineInfo.hpp:
+src/h83069fMMP/MovementController.hpp:
+
+src/h83069fMMP/Info.hpp:

@@ -2,182 +2,142 @@
 
 using namespace eommpsys;
 
-Result H8Mouse::Advance(uint16_t distance, uint16_t speed) {
-  const uint16_t movement_range = distance / utils::DISTANCE_PER_DEGREE;
-  const uint16_t wheel_speed =
-      speed / utils::DISTANCE_PER_DEGREE;  // degree per sec
-  Result left_stats, right_stats;
-
-  if (nullptr == motor_left || nullptr == motor_right) {
-    return Result::NOT_LINKED_MOTOR;
-  }
-
-  left_stats = motor_left->Setup(movement_range, wheel_speed);
-  right_stats = motor_right->Setup(movement_range, wheel_speed);
-
-  if (left_stats != Result::SUCCESS || right_stats != Result::SUCCESS) {
-    return Result::UNKNOWN_ERROR;
-  }
-
-  motor_left->Enable(true);
-  motor_left->Start();
-  motor_right->Start();
-
-  while (motor_left->CheckEnd() != Result::HALTED &&
-         motor_right->CheckEnd() != Result::HALTED)
-    ;
-
-  motor_left->Enable(false);
-
-  return Result::SUCCESS;
+void H8Mouse::SetStart(void) {
+  state = WAITING;
+  mov_con.PutDownCenterFlag();
 }
 
-Result H8Mouse::Spinturn(uint16_t speed, Direction direction) {
-  constexpr uint16_t movement_range =
-      (utils::DegreeToRadian<float>(90) * (utils::TRED / 2.0f)) /
-      utils::DISTANCE_PER_DEGREE;
-  uint16_t wheel_speed = speed / utils::DISTANCE_PER_DEGREE;
-  Result left_stats, right_stats;
+Result H8Mouse::AutoPilot(SideDegiSens_t& current_pos) {
+  // static volatile bool left_side = false, right_side = false, center_by =
+  // false;
+  static volatile uint16_t acc_count = 0;
+  static uint64_t acc_start_time = 0;
 
-  if (motor_left == nullptr || motor_right == nullptr) {
-    return Result::NOT_LINKED_MOTOR;
-  } else if (direction < Direction::SOUTH || direction > Direction::EAST) {
-    return Result::INVALID_DIRECTION;
+  // while (true) {
+
+  if (Time::GetCurrentTime() - acc_start_time > utils::ACCELE_DELTA_TIME) {
+    acc_start_time = Time::GetCurrentTime();
+    acc_count++;
   }
 
-  switch (direction) {
-    case Direction::NORTH:
+  switch (state) {
+    // 待機状態(初期状態)
+    // 加速時の変数の設定、前進命令
+    // ACCELERATEに遷移
+    case WAITING:
+      state = START_REQUIRED;
       break;
-    case Direction::SOUTH:
-      left_stats = motor_left->Setup((movement_range * 2), wheel_speed, true);
-      right_stats = motor_right->Setup((movement_range * 2), wheel_speed);
+
+    case START_REQUIRED:
+      mov_con.Advance<utils::GRID_SIZE,
+                      static_cast<uint16_t>(utils::MAX_SPEED *
+                                            utils::ACCELE_TABLE[0])>();
+      state = ACCELERATE;
       break;
-    case Direction::WEST:
-      left_stats = motor_left->Setup(movement_range, wheel_speed, true);
-      right_stats = motor_right->Setup(movement_range, wheel_speed);
+
+    // 加速状態
+    // 加速中。指定の時間間隔で加速。
+    // CRUISEに遷移
+    case ACCELERATE:
+      mov_con.ChangeSpeed(utils::MAX_SPEED * utils::ACCELE_TABLE[acc_count]);
+      // }
+      if (acc_count >= utils::ACCELE_TABLE.size()) {
+        state = CRUISE;
+      }
       break;
-    case Direction::EAST:
-      left_stats = motor_left->Setup(movement_range, wheel_speed);
-      right_stats = motor_right->Setup(movement_range, wheel_speed, true);
+
+    case CRUISE:
+      if (current_pos.left == true) {
+        if (current_pos.center == false) {
+          mov_con.BackOnTrack(0.95f, EAST);
+        } else {
+          mov_con.BackOnTrack(0.97f, EAST);
+        }
+      } else if (current_pos.right == true) {
+        if (current_pos.center == false) {
+          mov_con.BackOnTrack(0.95f, WEST);
+        } else {
+          mov_con.BackOnTrack(0.97f, WEST);
+        }
+
+      } else {
+        mov_con.ChangeSpeed(utils::MAX_SPEED);
+      }
+
+      if (mov_con.CheckEnd() == Result::HALTED) {
+        mov_con.Advance<utils::GRID_SIZE, utils::MAX_SPEED>();
+      }
       break;
+
+    case STOP_REQURED:
+      acc_count = utils::ACCELE_TABLE.size();
+      state = DECELERATE;
+      break;
+
+    case DECELERATE:
+      if (acc_count >= utils::ACCELE_TABLE.size()) {
+        mov_con.ChangeSpeed(
+            utils::MAX_SPEED *
+            utils::ACCELE_TABLE[(utils::ACCELE_TABLE.size() * 2 - 1) -
+                                acc_count]);
+      }
+      if (mov_con.CheckEnd() == HALTED) {
+        state = STOPED;
+      }
+      break;
+
+    case STOPED:
+      mov_con.Brake();
+      Time::Delay(150);
+      mov_con.Stop();
+      Time::Delay(50);
+      state = TURN_REQUIRED;
+      break;
+
+    case TURN_REQUIRED:
+      mov_con.Spinturn(utils::MAX_SPEED * 0.35f, next_dir);
+      state = TURNING;
+      break;
+
+    case TURNING:
+      if (mov_con.CheckEnd() == HALTED) {
+        mov_con.Brake();
+        Time::Delay(100);
+        // mov_con.Stop();
+        // Time::Delay(200);
+        if (next_wall.left == 0 && next_wall.right == 0) {
+          // state = START_REQUIRED;
+          mov_con.Backward<50, 150>();
+          state = KETSU;
+        } else {
+          mov_con.Backward<90, 150>();
+          state = KETSU;
+        }
+      }
+      break;
+
+    case KETSU:
+      if (mov_con.CheckEnd() == HALTED) {
+        mov_con.Stop();
+        Time::Delay(100);
+        state = START_REQUIRED;
+      }
+      break;
+
+    case REACHED:
+      state = WAITING;
+      mov_con.Stop();
+      return Result::HALTED;
+      break;
+
     default:
       return Result::UNKNOWN_ERROR;
   }
 
-  if (left_stats != Result::SUCCESS || right_stats != Result::SUCCESS) {
-    return Result::UNKNOWN_ERROR;
+  if (mov_con.CheckEnd() == HALTED) {
+    acc_count = 0;
   }
-
-  motor_left->Enable(true);
-  motor_left->Start();
-  motor_right->Start();
-
-  while (motor_left->CheckEnd() != Result::HALTED &&
-         motor_right->CheckEnd() != Result::HALTED) {
-  }
-
-  motor_left->Enable(false);
+  // }
 
   return Result::SUCCESS;
-}
-
-Result H8Mouse::ChangeSpeed(uint16_t speed) {
-  uint16_t wheel_speed;
-
-  if (nullptr == motor_left || nullptr == motor_right) {
-    return Result::NOT_LINKED_MOTOR;
-  }
-
-  if (speed != 0) {
-    wheel_speed = speed / utils::DISTANCE_PER_DEGREE;
-  } else {
-    motor_left->Enable(false);
-    return Result::SUCCESS;
-  }
-
-  motor_left->ChangeSpeed(wheel_speed);
-  motor_right->ChangeSpeed(wheel_speed);
-
-  return Result::SUCCESS;
-}
-
-inline void H8Mouse::Stop(void) {
-  motor_left->Enable(false);
-}
-
-Result H8Mouse::AutoPilot(void) {
-  volatile uint16_t acc_count = 0, temp_count = 0;
-  uint64_t acc_start_time = 0;
-
-  if (nullptr == motor_left || nullptr == motor_right) {
-    return Result::NOT_LINKED_MOTOR;
-  } else if (mouse_state != MouseState::WAITING) {
-    return Result::RUNNING;
-  }
-
-  while (true) {
-    switch (mouse_state) {
-      // 待機状態(初期状態)
-      // 加速時の変数の設定、前進命令
-      // ACCELERATEに遷移
-      case WAITING:
-        Advance<180, static_cast<uint16_t>(MAX_SPEED * ACCELE_TABLE[0])>();
-        acc_start_time = Time::GetCurrentTime();
-        mouse_state = ACCELERATE;
-        break;
-      // 加速状態
-      // 加速中。指定の時間間隔で加速。
-      // CRUISEに遷移
-      case ACCELERATE:
-        if (Time::GetCurrentTime() - acc_start_time > ACCELE_DELTA_TIME) {
-          acc_start_time = Time::GetCurrentTime();
-          ChangeSpeed(MAX_SPEED * ACCELE_TABLE[++acc_count]);
-        }
-        if (acc_count >= ACCELE_TABLE.size()) {
-          acc_count = 0;
-          mouse_state = CRUISE;
-        }
-        break;
-      case CRUISE:
-        if (motor_right->CheckEnd() == Result::HALTED &&
-            motor_left->CheckEnd() == Result::HALTED) {
-          Stop();
-          Advance<180, MAX_SPEED>();
-          temp_count++;
-        } else if (temp_count >= 4) {
-          mouse_state = STOP_REQURED;
-        }
-        break;
-      case STOP_REQURED:
-        acc_count = ACCELE_TABLE.size();
-        acc_start_time = Time::GetCurrentTime();
-        mouse_state = DECELERATE;
-        break;
-      case DECELERATE:
-        if (Time::GetCurrentTime() - acc_start_time > ACCELE_DELTA_TIME) {
-          acc_start_time = Time::GetCurrentTime();
-          ChangeSpeed(MAX_SPEED * ACCELE_TABLE[--acc_count]);
-        }
-        if (acc_count <= 0) {
-          acc_count = 0;
-          mouse_state = STOPED;
-        }
-        break;
-      case STOPED:
-        if (motor_right->CheckEnd() == Result::HALTED &&
-            motor_left->CheckEnd() == Result::HALTED) {
-          ChangeSpeed(0);
-          mouse_state = REACHED;
-        }
-        break;
-      case TURN:
-        break;
-      case REACHED:
-        mouse_state = WAITING;
-        motor_left->Enable(false);
-        return Result::SUCCESS;
-      default:
-        return Result::UNKNOWN_ERROR;
-    }
-  }
 }

@@ -26,6 +26,10 @@ class H8Motor {
   ~H8Motor() = default;
 
   virtual void Start(void) = 0;
+  virtual bool OnCenter(void) = 0;
+  virtual void PutDownCenterFlag(void) = 0;
+  virtual Result Brake(void) = 0;
+  virtual void Enable(bool) = 0;
   /**
    * @brief 回転を開始する
    *
@@ -86,8 +90,6 @@ class H8Motor {
       return Result::HALTED;  // halted
     }
   }
-
-  virtual void Enable(bool) = 0;
 };
 
 class H8MotorR : public H8Motor {
@@ -105,6 +107,7 @@ class H8MotorR : public H8Motor {
 
   static volatile bool running;
   static volatile bool signal_abort;
+  static volatile bool on_center;
 
   static volatile uint16_t target_val;
   static volatile uint16_t pulse_count;
@@ -137,7 +140,11 @@ class H8MotorR : public H8Motor {
 
   template <typename T>
   static uint16_t CalcCompareVal(const T speed) {
-    return base_hz * (ROTATE_DEGREE_PER_PULSE / speed);
+    float freq = (ROTATE_DEGREE_PER_PULSE / speed);
+    if (290.0f <= freq && freq >= 410.0f) {
+      freq = 410.0f;
+    }
+    return base_hz * freq;
   }
   template <typename T>
   static uint16_t CalcPulseFromDegree(const T degree) {
@@ -155,6 +162,16 @@ class H8MotorR : public H8Motor {
 
   inline void Start(void) override { timer->restart(); }
   static void Init(TimerManager::TimerBase<uint16_t>& tim);
+  inline bool OnCenter(void) override { return on_center; }
+  void PutDownCenterFlag(void) override { on_center = false; }
+  Result Brake(void) override {
+    if (IsRunning()) {
+      return Result::RUNNING;
+    } else {
+      timer->pause();
+      return Result::SUCCESS;
+    }
+  }
   void Enable(bool flag = true) override {
     // #warning 試作ボード仕様になってます
     if (flag) {
@@ -181,6 +198,7 @@ class H8MotorL : public H8Motor {
   static TimerManager::TimerBase<uint16_t>* timer;
   static volatile bool running;
   static volatile bool signal_abort;
+  static volatile bool on_center;
 
   static volatile uint16_t target_val;
   static volatile uint16_t pulse_count;
@@ -213,7 +231,11 @@ class H8MotorL : public H8Motor {
 
   template <typename T>
   static uint16_t CalcCompareVal(const T speed) {
-    return base_hz * (ROTATE_DEGREE_PER_PULSE / speed);
+    float freq = (ROTATE_DEGREE_PER_PULSE / speed);
+    if (290.0f <= freq && freq >= 410.0f) {
+      freq = 410.0f;
+    }
+    return base_hz * freq;
   }
   template <typename T>
   static uint16_t CalcPulseFromDegree(const T degree) {
@@ -231,6 +253,16 @@ class H8MotorL : public H8Motor {
 
   inline void Start(void) { timer->restart(); }
   static void Init(TimerManager::TimerBase<uint16_t>& tim);
+  inline bool OnCenter(void) override { return on_center; }
+  void PutDownCenterFlag(void) override { on_center = false; }
+  Result Brake(void) override {
+    if (IsRunning()) {
+      return Result::RUNNING;
+    } else {
+      timer->pause();
+      return Result::SUCCESS;
+    }
+  }
   void Enable(bool flag = true) override {
     // #warning 試作ボード仕様になってます
     if (flag) {

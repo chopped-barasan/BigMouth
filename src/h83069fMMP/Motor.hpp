@@ -140,11 +140,11 @@ class H8MotorR : public H8Motor {
 
   template <typename T>
   static uint16_t CalcCompareVal(const T speed) {
-    float freq = (ROTATE_DEGREE_PER_PULSE / speed);
-    if (290.0f <= freq && freq >= 410.0f) {
+    float freq = (speed / ROTATE_DEGREE_PER_PULSE);
+    if (290.0f <= freq && freq <= 410.0f) {
       freq = 410.0f;
     }
-    return base_hz * freq;
+    return base_hz / freq;
   }
   template <typename T>
   static uint16_t CalcPulseFromDegree(const T degree) {
@@ -231,11 +231,11 @@ class H8MotorL : public H8Motor {
 
   template <typename T>
   static uint16_t CalcCompareVal(const T speed) {
-    float freq = (ROTATE_DEGREE_PER_PULSE / speed);
-    if (290.0f <= freq && freq >= 410.0f) {
+    float freq = (speed / ROTATE_DEGREE_PER_PULSE);
+    if (290.0f <= freq && freq <= 410.0f) {
       freq = 410.0f;
     }
-    return base_hz * freq;
+    return base_hz / freq;
   }
   template <typename T>
   static uint16_t CalcPulseFromDegree(const T degree) {
@@ -274,50 +274,5 @@ class H8MotorL : public H8Motor {
     }
   }
 };
-
-// class h8MotorR {
-//  private:
-//   union un_h8motr {
-//     bitAccess_t<_BYTE, 0> enable;
-//     bitAccess_t<_BYTE, 1> phase;
-//     bitAccess_t<_BYTE, 4> step;
-//     bitAccess_t<_BYTE, 6> dir;
-//   };
-//   static inline auto& motor =
-//       *reinterpret_cast<union un_h8motr*>(H8Reg::addr_padr);
-
-//   static TimerManager::TimerBase<uint16_t>* timer;
-
-//   static void motorHandlerA(void);
-//   static void motorHandlerB(void);
-
-//   static constexpr float diameter = 50.7f;
-//   static constexpr float circle(void) { return diameter * 2 * M_PI; }
-//   static constexpr float lengthMovingAPulse(void) { return circle() * 0.005f;
-//   }
-
-//  public:
-//   h8MotorR() = default;
-//   ~h8MotorR() = default;
-
-//   static void init(TimerManager::TimerBase<uint16_t>& tim);
-
-//   void reverse(bool reverse) {
-//     if (reverse) {
-//       motor.dir = 1;
-//     } else {
-//       motor.dir = 0;
-//     }
-//   }
-
-//   void start(void) {
-//     motor.phase = 1;
-//     timer->start();
-//   }
-//   void stop(void) {
-//     motor.phase = 0;
-//     timer->stop();
-//   }
-// };
 
 }  // namespace eommpsys

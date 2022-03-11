@@ -8,8 +8,6 @@ void H8Mouse::SetStart(void) {
 }
 
 Result H8Mouse::AutoPilot(SideDegiSens_t& current_pos) {
-  // static volatile bool left_side = false, right_side = false, center_by =
-  // false;
   static volatile uint16_t acc_count = 0;
   static uint64_t acc_start_time = 0;
 

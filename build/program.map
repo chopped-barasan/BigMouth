@@ -218,7 +218,7 @@ eight            0x0000000000ffff00 0x0000000000000100
 
 Linker script and memory map
 
-LOAD /tmp/ccDcOTPj.o
+LOAD /tmp/ccM2FPHO.o
 LOAD ./temp/ui.o
 LOAD ./temp/delay.o
 LOAD ./temp/intr.o
@@ -300,10 +300,10 @@ LOAD /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a
                 0x00000000000000f8        0x4 LONG 0x100 DEFINED (_int_txi2)?ABSOLUTE (_int_txi2):ABSOLUTE (_start)
                 0x00000000000000fc        0x4 LONG 0x100 DEFINED (_int_tei2)?ABSOLUTE (_int_tei2):ABSOLUTE (_start)
 
-.text           0x0000000000000100     0x33bc
+.text           0x0000000000000100     0x33b0
  CREATE_OBJECT_SYMBOLS
  *(.text)
- .text          0x0000000000000100       0x44 /tmp/ccDcOTPj.o
+ .text          0x0000000000000100       0x44 /tmp/ccM2FPHO.o
                 0x0000000000000100                _start
                 0x0000000000000140                _exit
  .text          0x0000000000000144        0x0 ./temp/ui.o
@@ -348,546 +348,546 @@ LOAD /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a
                 0x00000000000005c8                _int_cmiab3
                 0x0000000000000626                _int_tovi23
  .text          0x0000000000000686        0x0 ./temp/main.o
- .text          0x0000000000000686      0xa3a ./temp/Mouse.o
+ .text          0x0000000000000686      0xa36 ./temp/Mouse.o
                 0x0000000000000686                __ZN8eommpsys7H8Mouse8SetStartEv
                 0x00000000000006bc                __ZN8eommpsys7H8Mouse9AutoPilotERNS_14SideDegiSens_tE
- .text          0x00000000000010c0      0x4c8 ./temp/TimerIntrMane.o
-                0x00000000000010c0                __ZN8eommpsys12TimerManager8TimerCH04stopEv
-                0x00000000000010ec                __ZN8eommpsys12TimerManager8TimerCH14stopEv
-                0x0000000000001120                __ZN8eommpsys12TimerManager8TimerCH24stopEv
-                0x0000000000001154                __ZN8eommpsys12TimerManager5TMR2313adaptHandlerAEv
-                0x0000000000001178                __ZN8eommpsys12TimerManager5TMR2313adaptHandlerBEv
-                0x000000000000119c                __ZN8eommpsys12TimerManager5TMR234stopEv
-                0x00000000000011dc                __ZN8eommpsys12TimerManager5TMR2315adaptHandlerOVFEv
-                0x00000000000011ee                __ZN8eommpsys12TimerManager5TMR235startEv
-                0x00000000000012b2                __ZN8eommpsys12TimerManager8TimerCH05startEv
-                0x00000000000013a4                __ZN8eommpsys12TimerManager8TimerCH15startEv
-                0x0000000000001496                __ZN8eommpsys12TimerManager8TimerCH25startEv
- .text          0x0000000000001588      0x74a ./temp/MovementController.o
-                0x0000000000001588                __ZN8eommpsys20H8MovementController7ForwardEtt
-                0x000000000000174e                __ZN8eommpsys20H8MovementController8SpinturnEtNS_9DirectionE
-                0x0000000000001a42                __ZN8eommpsys20H8MovementController11ChangeSpeedEt
-                0x0000000000001b0c                __ZN8eommpsys20H8MovementController11BackOnTrackEfNS_9DirectionE
- .text          0x0000000000001cd2      0x59e ./temp/Motor.o
-                0x0000000000001cd2                __ZN8eommpsys8H8MotorR12intrHandlerAEv
-                0x0000000000001cf2                __ZN8eommpsys8H8MotorR6Setup_Ettb
-                0x0000000000001dee                __ZN8eommpsys8H8MotorR12ChangeSpeed_Et
-                0x0000000000001e78                __ZN8eommpsys8H8MotorL12intrHandlerAEv
-                0x0000000000001e98                __ZN8eommpsys8H8MotorL6Setup_Ettb
-                0x0000000000001f92                __ZN8eommpsys8H8MotorL12ChangeSpeed_Et
-                0x000000000000201c                __ZN8eommpsys8H8MotorR12intrHandlerBEv
-                0x0000000000002064                __ZN8eommpsys8H8MotorL12intrHandlerBEv
-                0x00000000000020ac                __ZN8eommpsys8H8MotorL6Abort_Ev
-                0x00000000000020ea                __ZN8eommpsys8H8MotorR6Abort_Ev
-                0x0000000000002128                __ZN8eommpsys8H8MotorR4InitERNS_12TimerManager9TimerBaseItEE
-                0x00000000000021cc                __ZN8eommpsys8H8MotorL4InitERNS_12TimerManager9TimerBaseItEE
- .text          0x0000000000002270        0x0 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(class_type_info.o)
- .text          0x0000000000002270        0x0 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(tinfo.o)
- .text          0x0000000000002270        0x0 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(si_class_type_info.o)
- .text          0x0000000000002270        0x0 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(del_ops.o)
- .text          0x0000000000002270        0x0 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(del_op.o)
- .text          0x0000000000002270       0x36 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_fixunssfsi.o)
-                0x0000000000002270                ___fixunssfsi
- .text          0x00000000000022a6      0x2e4 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_addsub_sf.o)
-                0x00000000000024e8                ___addsf3
-                0x0000000000002534                ___subsf3
- .text          0x000000000000258a      0x1b6 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_mul_sf.o)
-                0x000000000000258a                ___mulsf3
- .text          0x0000000000002740      0x11c /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_div_sf.o)
-                0x0000000000002740                ___divsf3
- .text          0x000000000000285c       0x5a /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_gt_sf.o)
-                0x000000000000285c                ___gtsf2
- .text          0x00000000000028b6       0x5a /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_ge_sf.o)
-                0x00000000000028b6                ___gesf2
- .text          0x0000000000002910       0x5a /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_le_sf.o)
-                0x0000000000002910                ___lesf2
- .text          0x000000000000296a       0x76 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_sf_to_si.o)
-                0x000000000000296a                ___fixsfsi
- .text          0x00000000000029e0        0x0 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_thenan_sf.o)
- .text          0x00000000000029e0       0x84 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_usi_to_sf.o)
-                0x00000000000029e0                ___floatunsisf
- .text          0x0000000000002a64       0x52 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_clzsi2.o)
-                0x0000000000002a64                ___clzsi2
- .text          0x0000000000002ab6      0x162 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_pack_sf.o)
-                0x0000000000002ab6                ___pack_f
- .text          0x0000000000002c18       0xbe /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_unpack_sf.o)
-                0x0000000000002c18                ___unpack_f
- .text          0x0000000000002cd6       0xa6 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_fpcmp_parts_sf.o)
-                0x0000000000002cd6                ___fpcmp_parts_f
- .text          0x0000000000002d7c        0x0 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_clz.o)
- .text          0x0000000000002d7c       0x20 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-malloc.o)
-                0x0000000000002d7c                _malloc
-                0x0000000000002d8c                _free
- .text          0x0000000000002d9c      0x10a /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-nano-freer.o)
-                0x0000000000002d9c                __free_r
- .text          0x0000000000002ea6      0x156 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-nano-mallocr.o)
-                0x0000000000002ea6                __malloc_r
- .text          0x0000000000002ffc       0x2a /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-sbrkr.o)
-                0x0000000000002ffc                __sbrk_r
- *fill*         0x0000000000003026        0x2 
- .text          0x0000000000003028       0x20 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-strcmp.o)
-                0x0000000000003028                _strcmp
- .text          0x0000000000003048        0x0 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-impure.o)
- .text          0x0000000000003048        0x4 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-mlock.o)
-                0x0000000000003048                ___malloc_lock
-                0x000000000000304a                ___malloc_unlock
- .text          0x000000000000304c      0x15e /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-reent.o)
-                0x000000000000304c                _cleanup_glue
-                0x0000000000003074                __reclaim_reent
- .text          0x00000000000031aa       0x60 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-sbrk.o)
-                0x00000000000031aa                __sbrk
- *fill*         0x000000000000320a        0x2 
- .text          0x000000000000320c        0x8 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-write.o)
-                0x000000000000320c                __write
- .text          0x0000000000003214       0x10 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-abort.o)
-                0x0000000000003214                _abort
- .text          0x0000000000003224      0x242 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-signal.o)
-                0x000000000000325a                __init_signal_r
-                0x000000000000326c                __signal_r
-                0x00000000000032d4                __raise_r
-                0x0000000000003350                ___sigtramp_r
-                0x00000000000033c4                _raise
-                0x00000000000033d4                _signal
-                0x000000000000343c                __init_signal
-                0x0000000000003456                ___sigtramp
- .text          0x0000000000003466       0x32 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-signalr.o)
-                0x0000000000003466                __kill_r
-                0x0000000000003492                __getpid_r
- .text          0x0000000000003498       0x10 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-_exit.o)
-                0x0000000000003498                __exit
- .text          0x00000000000034a8       0x14 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-misc.o)
-                0x00000000000034a8                __raise
-                0x00000000000034ac                __getpid
-                0x00000000000034b0                __kill
-                0x00000000000034bc                etext = .
+ .text          0x00000000000010bc      0x4c8 ./temp/TimerIntrMane.o
+                0x00000000000010bc                __ZN8eommpsys12TimerManager8TimerCH04stopEv
+                0x00000000000010e8                __ZN8eommpsys12TimerManager8TimerCH14stopEv
+                0x000000000000111c                __ZN8eommpsys12TimerManager8TimerCH24stopEv
+                0x0000000000001150                __ZN8eommpsys12TimerManager5TMR2313adaptHandlerAEv
+                0x0000000000001174                __ZN8eommpsys12TimerManager5TMR2313adaptHandlerBEv
+                0x0000000000001198                __ZN8eommpsys12TimerManager5TMR234stopEv
+                0x00000000000011d8                __ZN8eommpsys12TimerManager5TMR2315adaptHandlerOVFEv
+                0x00000000000011ea                __ZN8eommpsys12TimerManager5TMR235startEv
+                0x00000000000012ae                __ZN8eommpsys12TimerManager8TimerCH05startEv
+                0x00000000000013a0                __ZN8eommpsys12TimerManager8TimerCH15startEv
+                0x0000000000001492                __ZN8eommpsys12TimerManager8TimerCH25startEv
+ .text          0x0000000000001584      0x74a ./temp/MovementController.o
+                0x0000000000001584                __ZN8eommpsys20H8MovementController7ForwardEtt
+                0x000000000000174a                __ZN8eommpsys20H8MovementController8SpinturnEtNS_9DirectionE
+                0x0000000000001a3e                __ZN8eommpsys20H8MovementController11ChangeSpeedEt
+                0x0000000000001b08                __ZN8eommpsys20H8MovementController11BackOnTrackEfNS_9DirectionE
+ .text          0x0000000000001cce      0x596 ./temp/Motor.o
+                0x0000000000001cce                __ZN8eommpsys8H8MotorR12intrHandlerAEv
+                0x0000000000001cee                __ZN8eommpsys8H8MotorR6Setup_Ettb
+                0x0000000000001de8                __ZN8eommpsys8H8MotorR12ChangeSpeed_Et
+                0x0000000000001e70                __ZN8eommpsys8H8MotorL12intrHandlerAEv
+                0x0000000000001e90                __ZN8eommpsys8H8MotorL6Setup_Ettb
+                0x0000000000001f88                __ZN8eommpsys8H8MotorL12ChangeSpeed_Et
+                0x0000000000002010                __ZN8eommpsys8H8MotorR12intrHandlerBEv
+                0x0000000000002058                __ZN8eommpsys8H8MotorL12intrHandlerBEv
+                0x00000000000020a0                __ZN8eommpsys8H8MotorL6Abort_Ev
+                0x00000000000020de                __ZN8eommpsys8H8MotorR6Abort_Ev
+                0x000000000000211c                __ZN8eommpsys8H8MotorR4InitERNS_12TimerManager9TimerBaseItEE
+                0x00000000000021c0                __ZN8eommpsys8H8MotorL4InitERNS_12TimerManager9TimerBaseItEE
+ .text          0x0000000000002264        0x0 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(class_type_info.o)
+ .text          0x0000000000002264        0x0 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(tinfo.o)
+ .text          0x0000000000002264        0x0 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(si_class_type_info.o)
+ .text          0x0000000000002264        0x0 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(del_ops.o)
+ .text          0x0000000000002264        0x0 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(del_op.o)
+ .text          0x0000000000002264       0x36 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_fixunssfsi.o)
+                0x0000000000002264                ___fixunssfsi
+ .text          0x000000000000229a      0x2e4 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_addsub_sf.o)
+                0x00000000000024dc                ___addsf3
+                0x0000000000002528                ___subsf3
+ .text          0x000000000000257e      0x1b6 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_mul_sf.o)
+                0x000000000000257e                ___mulsf3
+ .text          0x0000000000002734      0x11c /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_div_sf.o)
+                0x0000000000002734                ___divsf3
+ .text          0x0000000000002850       0x5a /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_gt_sf.o)
+                0x0000000000002850                ___gtsf2
+ .text          0x00000000000028aa       0x5a /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_ge_sf.o)
+                0x00000000000028aa                ___gesf2
+ .text          0x0000000000002904       0x5a /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_le_sf.o)
+                0x0000000000002904                ___lesf2
+ .text          0x000000000000295e       0x76 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_sf_to_si.o)
+                0x000000000000295e                ___fixsfsi
+ .text          0x00000000000029d4        0x0 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_thenan_sf.o)
+ .text          0x00000000000029d4       0x84 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_usi_to_sf.o)
+                0x00000000000029d4                ___floatunsisf
+ .text          0x0000000000002a58       0x52 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_clzsi2.o)
+                0x0000000000002a58                ___clzsi2
+ .text          0x0000000000002aaa      0x162 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_pack_sf.o)
+                0x0000000000002aaa                ___pack_f
+ .text          0x0000000000002c0c       0xbe /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_unpack_sf.o)
+                0x0000000000002c0c                ___unpack_f
+ .text          0x0000000000002cca       0xa6 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_fpcmp_parts_sf.o)
+                0x0000000000002cca                ___fpcmp_parts_f
+ .text          0x0000000000002d70        0x0 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_clz.o)
+ .text          0x0000000000002d70       0x20 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-malloc.o)
+                0x0000000000002d70                _malloc
+                0x0000000000002d80                _free
+ .text          0x0000000000002d90      0x10a /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-nano-freer.o)
+                0x0000000000002d90                __free_r
+ .text          0x0000000000002e9a      0x156 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-nano-mallocr.o)
+                0x0000000000002e9a                __malloc_r
+ .text          0x0000000000002ff0       0x2a /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-sbrkr.o)
+                0x0000000000002ff0                __sbrk_r
+ *fill*         0x000000000000301a        0x2 
+ .text          0x000000000000301c       0x20 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-strcmp.o)
+                0x000000000000301c                _strcmp
+ .text          0x000000000000303c        0x0 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-impure.o)
+ .text          0x000000000000303c        0x4 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-mlock.o)
+                0x000000000000303c                ___malloc_lock
+                0x000000000000303e                ___malloc_unlock
+ .text          0x0000000000003040      0x15e /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-reent.o)
+                0x0000000000003040                _cleanup_glue
+                0x0000000000003068                __reclaim_reent
+ .text          0x000000000000319e       0x60 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-sbrk.o)
+                0x000000000000319e                __sbrk
+ *fill*         0x00000000000031fe        0x2 
+ .text          0x0000000000003200        0x8 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-write.o)
+                0x0000000000003200                __write
+ .text          0x0000000000003208       0x10 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-abort.o)
+                0x0000000000003208                _abort
+ .text          0x0000000000003218      0x242 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-signal.o)
+                0x000000000000324e                __init_signal_r
+                0x0000000000003260                __signal_r
+                0x00000000000032c8                __raise_r
+                0x0000000000003344                ___sigtramp_r
+                0x00000000000033b8                _raise
+                0x00000000000033c8                _signal
+                0x0000000000003430                __init_signal
+                0x000000000000344a                ___sigtramp
+ .text          0x000000000000345a       0x32 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-signalr.o)
+                0x000000000000345a                __kill_r
+                0x0000000000003486                __getpid_r
+ .text          0x000000000000348c       0x10 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-_exit.o)
+                0x000000000000348c                __exit
+ .text          0x000000000000349c       0x14 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-misc.o)
+                0x000000000000349c                __raise
+                0x00000000000034a0                __getpid
+                0x00000000000034a4                __kill
+                0x00000000000034b0                etext = .
 
 .text._ZN8eommpsys4Time12delayHandlerEv
-                0x00000000000034bc       0x54
+                0x00000000000034b0       0x54
  .text._ZN8eommpsys4Time12delayHandlerEv
-                0x00000000000034bc       0x54 ./temp/main.o
-                0x00000000000034bc                __ZN8eommpsys4Time12delayHandlerEv
+                0x00000000000034b0       0x54 ./temp/main.o
+                0x00000000000034b0                __ZN8eommpsys4Time12delayHandlerEv
 
 .text._ZN8eommpsys2ui10CeraBuzzer9handlerOnEv
-                0x0000000000003510        0x6
+                0x0000000000003504        0x6
  .text._ZN8eommpsys2ui10CeraBuzzer9handlerOnEv
-                0x0000000000003510        0x6 ./temp/main.o
-                0x0000000000003510                __ZN8eommpsys2ui10CeraBuzzer9handlerOnEv
+                0x0000000000003504        0x6 ./temp/main.o
+                0x0000000000003504                __ZN8eommpsys2ui10CeraBuzzer9handlerOnEv
 
 .text._ZN8eommpsys2ui10CeraBuzzer10handlerOffEv
-                0x0000000000003516        0xe
+                0x000000000000350a        0xe
  .text._ZN8eommpsys2ui10CeraBuzzer10handlerOffEv
-                0x0000000000003516        0xe ./temp/main.o
-                0x0000000000003516                __ZN8eommpsys2ui10CeraBuzzer10handlerOffEv
+                0x000000000000350a        0xe ./temp/main.o
+                0x000000000000350a                __ZN8eommpsys2ui10CeraBuzzer10handlerOffEv
 
 .text._ZN8eommpsys2ui10CeraBuzzer4InitERNS_12TimerManager9TimerBaseItEE
-                0x0000000000003524       0x9a
+                0x0000000000003518       0x9a
  .text._ZN8eommpsys2ui10CeraBuzzer4InitERNS_12TimerManager9TimerBaseItEE
-                0x0000000000003524       0x9a ./temp/main.o
-                0x0000000000003524                __ZN8eommpsys2ui10CeraBuzzer4InitERNS_12TimerManager9TimerBaseItEE
+                0x0000000000003518       0x9a ./temp/main.o
+                0x0000000000003518                __ZN8eommpsys2ui10CeraBuzzer4InitERNS_12TimerManager9TimerBaseItEE
 
-.text.startup   0x00000000000035be      0x59a
- .text.startup  0x00000000000035be      0x59a ./temp/main.o
-                0x00000000000035be                _main
+.text.startup   0x00000000000035b2      0x59a
+ .text.startup  0x00000000000035b2      0x59a ./temp/main.o
+                0x00000000000035b2                _main
 
 .text._ZN8eommpsys12TimerManager8TimerCH013adaptGeneralAEt
-                0x0000000000003b58        0x6
+                0x0000000000003b4c        0x6
  .text._ZN8eommpsys12TimerManager8TimerCH013adaptGeneralAEt
-                0x0000000000003b58        0x6 ./temp/TimerIntrMane.o
-                0x0000000000003b58                __ZN8eommpsys12TimerManager8TimerCH013adaptGeneralAEt
+                0x0000000000003b4c        0x6 ./temp/TimerIntrMane.o
+                0x0000000000003b4c                __ZN8eommpsys12TimerManager8TimerCH013adaptGeneralAEt
 
 .text._ZN8eommpsys12TimerManager8TimerCH013adaptGeneralBEt
-                0x0000000000003b5e        0x6
+                0x0000000000003b52        0x6
  .text._ZN8eommpsys12TimerManager8TimerCH013adaptGeneralBEt
-                0x0000000000003b5e        0x6 ./temp/TimerIntrMane.o
-                0x0000000000003b5e                __ZN8eommpsys12TimerManager8TimerCH013adaptGeneralBEt
+                0x0000000000003b52        0x6 ./temp/TimerIntrMane.o
+                0x0000000000003b52                __ZN8eommpsys12TimerManager8TimerCH013adaptGeneralBEt
 
 .text._ZN8eommpsys12TimerManager8TimerCH113adaptGeneralAEt
-                0x0000000000003b64        0x6
+                0x0000000000003b58        0x6
  .text._ZN8eommpsys12TimerManager8TimerCH113adaptGeneralAEt
-                0x0000000000003b64        0x6 ./temp/TimerIntrMane.o
-                0x0000000000003b64                __ZN8eommpsys12TimerManager8TimerCH113adaptGeneralAEt
+                0x0000000000003b58        0x6 ./temp/TimerIntrMane.o
+                0x0000000000003b58                __ZN8eommpsys12TimerManager8TimerCH113adaptGeneralAEt
 
 .text._ZN8eommpsys12TimerManager8TimerCH113adaptGeneralBEt
-                0x0000000000003b6a        0x6
+                0x0000000000003b5e        0x6
  .text._ZN8eommpsys12TimerManager8TimerCH113adaptGeneralBEt
-                0x0000000000003b6a        0x6 ./temp/TimerIntrMane.o
-                0x0000000000003b6a                __ZN8eommpsys12TimerManager8TimerCH113adaptGeneralBEt
+                0x0000000000003b5e        0x6 ./temp/TimerIntrMane.o
+                0x0000000000003b5e                __ZN8eommpsys12TimerManager8TimerCH113adaptGeneralBEt
 
 .text._ZN8eommpsys12TimerManager8TimerCH213adaptGeneralAEt
-                0x0000000000003b70        0x6
+                0x0000000000003b64        0x6
  .text._ZN8eommpsys12TimerManager8TimerCH213adaptGeneralAEt
-                0x0000000000003b70        0x6 ./temp/TimerIntrMane.o
-                0x0000000000003b70                __ZN8eommpsys12TimerManager8TimerCH213adaptGeneralAEt
+                0x0000000000003b64        0x6 ./temp/TimerIntrMane.o
+                0x0000000000003b64                __ZN8eommpsys12TimerManager8TimerCH213adaptGeneralAEt
 
 .text._ZN8eommpsys12TimerManager8TimerCH213adaptGeneralBEt
-                0x0000000000003b76        0x6
+                0x0000000000003b6a        0x6
  .text._ZN8eommpsys12TimerManager8TimerCH213adaptGeneralBEt
-                0x0000000000003b76        0x6 ./temp/TimerIntrMane.o
-                0x0000000000003b76                __ZN8eommpsys12TimerManager8TimerCH213adaptGeneralBEt
+                0x0000000000003b6a        0x6 ./temp/TimerIntrMane.o
+                0x0000000000003b6a                __ZN8eommpsys12TimerManager8TimerCH213adaptGeneralBEt
 
 .text._ZN8eommpsys12TimerManager5TMR2313adaptGeneralAEt
-                0x0000000000003b7c        0x6
+                0x0000000000003b70        0x6
  .text._ZN8eommpsys12TimerManager5TMR2313adaptGeneralAEt
-                0x0000000000003b7c        0x6 ./temp/TimerIntrMane.o
-                0x0000000000003b7c                __ZN8eommpsys12TimerManager5TMR2313adaptGeneralAEt
+                0x0000000000003b70        0x6 ./temp/TimerIntrMane.o
+                0x0000000000003b70                __ZN8eommpsys12TimerManager5TMR2313adaptGeneralAEt
 
 .text._ZN8eommpsys12TimerManager5TMR2313adaptGeneralBEt
-                0x0000000000003b82        0x6
+                0x0000000000003b76        0x6
  .text._ZN8eommpsys12TimerManager5TMR2313adaptGeneralBEt
-                0x0000000000003b82        0x6 ./temp/TimerIntrMane.o
-                0x0000000000003b82                __ZN8eommpsys12TimerManager5TMR2313adaptGeneralBEt
+                0x0000000000003b76        0x6 ./temp/TimerIntrMane.o
+                0x0000000000003b76                __ZN8eommpsys12TimerManager5TMR2313adaptGeneralBEt
 
 .text._ZN8eommpsys12TimerManager8TimerCH07restartEv
-                0x0000000000003b88        0x6
+                0x0000000000003b7c        0x6
  .text._ZN8eommpsys12TimerManager8TimerCH07restartEv
-                0x0000000000003b88        0x6 ./temp/TimerIntrMane.o
-                0x0000000000003b88                __ZN8eommpsys12TimerManager8TimerCH07restartEv
+                0x0000000000003b7c        0x6 ./temp/TimerIntrMane.o
+                0x0000000000003b7c                __ZN8eommpsys12TimerManager8TimerCH07restartEv
 
 .text._ZN8eommpsys12TimerManager8TimerCH05pauseEv
-                0x0000000000003b8e        0x6
+                0x0000000000003b82        0x6
  .text._ZN8eommpsys12TimerManager8TimerCH05pauseEv
-                0x0000000000003b8e        0x6 ./temp/TimerIntrMane.o
-                0x0000000000003b8e                __ZN8eommpsys12TimerManager8TimerCH05pauseEv
+                0x0000000000003b82        0x6 ./temp/TimerIntrMane.o
+                0x0000000000003b82                __ZN8eommpsys12TimerManager8TimerCH05pauseEv
 
 .text._ZN8eommpsys12TimerManager8TimerCH17restartEv
-                0x0000000000003b94        0x6
+                0x0000000000003b88        0x6
  .text._ZN8eommpsys12TimerManager8TimerCH17restartEv
-                0x0000000000003b94        0x6 ./temp/TimerIntrMane.o
-                0x0000000000003b94                __ZN8eommpsys12TimerManager8TimerCH17restartEv
+                0x0000000000003b88        0x6 ./temp/TimerIntrMane.o
+                0x0000000000003b88                __ZN8eommpsys12TimerManager8TimerCH17restartEv
 
 .text._ZN8eommpsys12TimerManager8TimerCH15pauseEv
-                0x0000000000003b9a        0xe
+                0x0000000000003b8e        0xe
  .text._ZN8eommpsys12TimerManager8TimerCH15pauseEv
-                0x0000000000003b9a        0xe ./temp/TimerIntrMane.o
-                0x0000000000003b9a                __ZN8eommpsys12TimerManager8TimerCH15pauseEv
+                0x0000000000003b8e        0xe ./temp/TimerIntrMane.o
+                0x0000000000003b8e                __ZN8eommpsys12TimerManager8TimerCH15pauseEv
 
 .text._ZN8eommpsys12TimerManager8TimerCH27restartEv
-                0x0000000000003ba8        0x6
+                0x0000000000003b9c        0x6
  .text._ZN8eommpsys12TimerManager8TimerCH27restartEv
-                0x0000000000003ba8        0x6 ./temp/TimerIntrMane.o
-                0x0000000000003ba8                __ZN8eommpsys12TimerManager8TimerCH27restartEv
+                0x0000000000003b9c        0x6 ./temp/TimerIntrMane.o
+                0x0000000000003b9c                __ZN8eommpsys12TimerManager8TimerCH27restartEv
 
 .text._ZN8eommpsys12TimerManager8TimerCH25pauseEv
-                0x0000000000003bae        0xe
+                0x0000000000003ba2        0xe
  .text._ZN8eommpsys12TimerManager8TimerCH25pauseEv
-                0x0000000000003bae        0xe ./temp/TimerIntrMane.o
-                0x0000000000003bae                __ZN8eommpsys12TimerManager8TimerCH25pauseEv
+                0x0000000000003ba2        0xe ./temp/TimerIntrMane.o
+                0x0000000000003ba2                __ZN8eommpsys12TimerManager8TimerCH25pauseEv
 
 .text._ZN8eommpsys12TimerManager5TMR237restartEv
-                0x0000000000003bbc       0x3c
+                0x0000000000003bb0       0x3c
  .text._ZN8eommpsys12TimerManager5TMR237restartEv
-                0x0000000000003bbc       0x3c ./temp/TimerIntrMane.o
-                0x0000000000003bbc                __ZN8eommpsys12TimerManager5TMR237restartEv
+                0x0000000000003bb0       0x3c ./temp/TimerIntrMane.o
+                0x0000000000003bb0                __ZN8eommpsys12TimerManager5TMR237restartEv
 
 .text._ZN8eommpsys12TimerManager5TMR235pauseEv
-                0x0000000000003bf8       0x1a
+                0x0000000000003bec       0x1a
  .text._ZN8eommpsys12TimerManager5TMR235pauseEv
-                0x0000000000003bf8       0x1a ./temp/TimerIntrMane.o
-                0x0000000000003bf8                __ZN8eommpsys12TimerManager5TMR235pauseEv
+                0x0000000000003bec       0x1a ./temp/TimerIntrMane.o
+                0x0000000000003bec                __ZN8eommpsys12TimerManager5TMR235pauseEv
 
 .text._ZN8eommpsys12TimerManager8TimerCH013adaptHandlerAEv
-                0x0000000000003c12       0x2c
+                0x0000000000003c06       0x2c
  .text._ZN8eommpsys12TimerManager8TimerCH013adaptHandlerAEv
-                0x0000000000003c12       0x2c ./temp/TimerIntrMane.o
-                0x0000000000003c12                __ZN8eommpsys12TimerManager8TimerCH013adaptHandlerAEv
+                0x0000000000003c06       0x2c ./temp/TimerIntrMane.o
+                0x0000000000003c06                __ZN8eommpsys12TimerManager8TimerCH013adaptHandlerAEv
 
 .text._ZN8eommpsys12TimerManager8TimerCH013adaptHandlerBEv
-                0x0000000000003c3e       0x2c
+                0x0000000000003c32       0x2c
  .text._ZN8eommpsys12TimerManager8TimerCH013adaptHandlerBEv
-                0x0000000000003c3e       0x2c ./temp/TimerIntrMane.o
-                0x0000000000003c3e                __ZN8eommpsys12TimerManager8TimerCH013adaptHandlerBEv
+                0x0000000000003c32       0x2c ./temp/TimerIntrMane.o
+                0x0000000000003c32                __ZN8eommpsys12TimerManager8TimerCH013adaptHandlerBEv
 
 .text._ZN8eommpsys12TimerManager8TimerCH015adaptHandlerOVFEv
-                0x0000000000003c6a       0x1a
+                0x0000000000003c5e       0x1a
  .text._ZN8eommpsys12TimerManager8TimerCH015adaptHandlerOVFEv
-                0x0000000000003c6a       0x1a ./temp/TimerIntrMane.o
-                0x0000000000003c6a                __ZN8eommpsys12TimerManager8TimerCH015adaptHandlerOVFEv
+                0x0000000000003c5e       0x1a ./temp/TimerIntrMane.o
+                0x0000000000003c5e                __ZN8eommpsys12TimerManager8TimerCH015adaptHandlerOVFEv
 
 .text._ZN8eommpsys12TimerManager8TimerCH113adaptHandlerAEv
-                0x0000000000003c84       0x2c
+                0x0000000000003c78       0x2c
  .text._ZN8eommpsys12TimerManager8TimerCH113adaptHandlerAEv
-                0x0000000000003c84       0x2c ./temp/TimerIntrMane.o
-                0x0000000000003c84                __ZN8eommpsys12TimerManager8TimerCH113adaptHandlerAEv
+                0x0000000000003c78       0x2c ./temp/TimerIntrMane.o
+                0x0000000000003c78                __ZN8eommpsys12TimerManager8TimerCH113adaptHandlerAEv
 
 .text._ZN8eommpsys12TimerManager8TimerCH113adaptHandlerBEv
-                0x0000000000003cb0       0x2c
+                0x0000000000003ca4       0x2c
  .text._ZN8eommpsys12TimerManager8TimerCH113adaptHandlerBEv
-                0x0000000000003cb0       0x2c ./temp/TimerIntrMane.o
-                0x0000000000003cb0                __ZN8eommpsys12TimerManager8TimerCH113adaptHandlerBEv
+                0x0000000000003ca4       0x2c ./temp/TimerIntrMane.o
+                0x0000000000003ca4                __ZN8eommpsys12TimerManager8TimerCH113adaptHandlerBEv
 
 .text._ZN8eommpsys12TimerManager8TimerCH115adaptHandlerOVFEv
-                0x0000000000003cdc       0x1a
+                0x0000000000003cd0       0x1a
  .text._ZN8eommpsys12TimerManager8TimerCH115adaptHandlerOVFEv
-                0x0000000000003cdc       0x1a ./temp/TimerIntrMane.o
-                0x0000000000003cdc                __ZN8eommpsys12TimerManager8TimerCH115adaptHandlerOVFEv
+                0x0000000000003cd0       0x1a ./temp/TimerIntrMane.o
+                0x0000000000003cd0                __ZN8eommpsys12TimerManager8TimerCH115adaptHandlerOVFEv
 
 .text._ZN8eommpsys12TimerManager8TimerCH213adaptHandlerAEv
-                0x0000000000003cf6       0x2c
+                0x0000000000003cea       0x2c
  .text._ZN8eommpsys12TimerManager8TimerCH213adaptHandlerAEv
-                0x0000000000003cf6       0x2c ./temp/TimerIntrMane.o
-                0x0000000000003cf6                __ZN8eommpsys12TimerManager8TimerCH213adaptHandlerAEv
+                0x0000000000003cea       0x2c ./temp/TimerIntrMane.o
+                0x0000000000003cea                __ZN8eommpsys12TimerManager8TimerCH213adaptHandlerAEv
 
 .text._ZN8eommpsys12TimerManager8TimerCH213adaptHandlerBEv
-                0x0000000000003d22       0x2c
+                0x0000000000003d16       0x2c
  .text._ZN8eommpsys12TimerManager8TimerCH213adaptHandlerBEv
-                0x0000000000003d22       0x2c ./temp/TimerIntrMane.o
-                0x0000000000003d22                __ZN8eommpsys12TimerManager8TimerCH213adaptHandlerBEv
+                0x0000000000003d16       0x2c ./temp/TimerIntrMane.o
+                0x0000000000003d16                __ZN8eommpsys12TimerManager8TimerCH213adaptHandlerBEv
 
 .text._ZN8eommpsys12TimerManager8TimerCH215adaptHandlerOVFEv
-                0x0000000000003d4e       0x1a
+                0x0000000000003d42       0x1a
  .text._ZN8eommpsys12TimerManager8TimerCH215adaptHandlerOVFEv
-                0x0000000000003d4e       0x1a ./temp/TimerIntrMane.o
-                0x0000000000003d4e                __ZN8eommpsys12TimerManager8TimerCH215adaptHandlerOVFEv
+                0x0000000000003d42       0x1a ./temp/TimerIntrMane.o
+                0x0000000000003d42                __ZN8eommpsys12TimerManager8TimerCH215adaptHandlerOVFEv
 
 .text._ZN8eommpsys8H8MotorR10PutRunningEv
-                0x0000000000003d68        0xa
+                0x0000000000003d5c        0xa
  .text._ZN8eommpsys8H8MotorR10PutRunningEv
-                0x0000000000003d68        0xa ./temp/Motor.o
-                0x0000000000003d68                __ZN8eommpsys8H8MotorR10PutRunningEv
+                0x0000000000003d5c        0xa ./temp/Motor.o
+                0x0000000000003d5c                __ZN8eommpsys8H8MotorR10PutRunningEv
 
 .text._ZN8eommpsys8H8MotorR14SetSignalAbortEb
-                0x0000000000003d72        0x8
+                0x0000000000003d66        0x8
  .text._ZN8eommpsys8H8MotorR14SetSignalAbortEb
-                0x0000000000003d72        0x8 ./temp/Motor.o
-                0x0000000000003d72                __ZN8eommpsys8H8MotorR14SetSignalAbortEb
+                0x0000000000003d66        0x8 ./temp/Motor.o
+                0x0000000000003d66                __ZN8eommpsys8H8MotorR14SetSignalAbortEb
 
 .text._ZN8eommpsys8H8MotorR9IsRunningEv
-                0x0000000000003d7a        0x8
+                0x0000000000003d6e        0x8
  .text._ZN8eommpsys8H8MotorR9IsRunningEv
-                0x0000000000003d7a        0x8 ./temp/Motor.o
-                0x0000000000003d7a                __ZN8eommpsys8H8MotorR9IsRunningEv
+                0x0000000000003d6e        0x8 ./temp/Motor.o
+                0x0000000000003d6e                __ZN8eommpsys8H8MotorR9IsRunningEv
 
 .text._ZN8eommpsys8H8MotorR10IsAbortingEv
-                0x0000000000003d82        0x8
+                0x0000000000003d76        0x8
  .text._ZN8eommpsys8H8MotorR10IsAbortingEv
-                0x0000000000003d82        0x8 ./temp/Motor.o
-                0x0000000000003d82                __ZN8eommpsys8H8MotorR10IsAbortingEv
+                0x0000000000003d76        0x8 ./temp/Motor.o
+                0x0000000000003d76                __ZN8eommpsys8H8MotorR10IsAbortingEv
 
 .text._ZN8eommpsys8H8MotorR5StartEv
-                0x0000000000003d8a       0x16
+                0x0000000000003d7e       0x16
  .text._ZN8eommpsys8H8MotorR5StartEv
-                0x0000000000003d8a       0x16 ./temp/Motor.o
-                0x0000000000003d8a                __ZN8eommpsys8H8MotorR5StartEv
+                0x0000000000003d7e       0x16 ./temp/Motor.o
+                0x0000000000003d7e                __ZN8eommpsys8H8MotorR5StartEv
 
 .text._ZN8eommpsys8H8MotorR8OnCenterEv
-                0x0000000000003da0        0x8
+                0x0000000000003d94        0x8
  .text._ZN8eommpsys8H8MotorR8OnCenterEv
-                0x0000000000003da0        0x8 ./temp/Motor.o
-                0x0000000000003da0                __ZN8eommpsys8H8MotorR8OnCenterEv
+                0x0000000000003d94        0x8 ./temp/Motor.o
+                0x0000000000003d94                __ZN8eommpsys8H8MotorR8OnCenterEv
 
 .text._ZN8eommpsys8H8MotorR17PutDownCenterFlagEv
-                0x0000000000003da8        0xa
+                0x0000000000003d9c        0xa
  .text._ZN8eommpsys8H8MotorR17PutDownCenterFlagEv
-                0x0000000000003da8        0xa ./temp/Motor.o
-                0x0000000000003da8                __ZN8eommpsys8H8MotorR17PutDownCenterFlagEv
+                0x0000000000003d9c        0xa ./temp/Motor.o
+                0x0000000000003d9c                __ZN8eommpsys8H8MotorR17PutDownCenterFlagEv
 
 .text._ZN8eommpsys8H8MotorR6EnableEb
-                0x0000000000003db2       0x10
+                0x0000000000003da6       0x10
  .text._ZN8eommpsys8H8MotorR6EnableEb
-                0x0000000000003db2       0x10 ./temp/Motor.o
-                0x0000000000003db2                __ZN8eommpsys8H8MotorR6EnableEb
+                0x0000000000003da6       0x10 ./temp/Motor.o
+                0x0000000000003da6                __ZN8eommpsys8H8MotorR6EnableEb
 
 .text._ZN8eommpsys8H8MotorL10PutRunningEv
-                0x0000000000003dc2        0xa
+                0x0000000000003db6        0xa
  .text._ZN8eommpsys8H8MotorL10PutRunningEv
-                0x0000000000003dc2        0xa ./temp/Motor.o
-                0x0000000000003dc2                __ZN8eommpsys8H8MotorL10PutRunningEv
+                0x0000000000003db6        0xa ./temp/Motor.o
+                0x0000000000003db6                __ZN8eommpsys8H8MotorL10PutRunningEv
 
 .text._ZN8eommpsys8H8MotorL14SetSignalAbortEb
-                0x0000000000003dcc        0x8
+                0x0000000000003dc0        0x8
  .text._ZN8eommpsys8H8MotorL14SetSignalAbortEb
-                0x0000000000003dcc        0x8 ./temp/Motor.o
-                0x0000000000003dcc                __ZN8eommpsys8H8MotorL14SetSignalAbortEb
+                0x0000000000003dc0        0x8 ./temp/Motor.o
+                0x0000000000003dc0                __ZN8eommpsys8H8MotorL14SetSignalAbortEb
 
 .text._ZN8eommpsys8H8MotorL9IsRunningEv
-                0x0000000000003dd4        0x8
+                0x0000000000003dc8        0x8
  .text._ZN8eommpsys8H8MotorL9IsRunningEv
-                0x0000000000003dd4        0x8 ./temp/Motor.o
-                0x0000000000003dd4                __ZN8eommpsys8H8MotorL9IsRunningEv
+                0x0000000000003dc8        0x8 ./temp/Motor.o
+                0x0000000000003dc8                __ZN8eommpsys8H8MotorL9IsRunningEv
 
 .text._ZN8eommpsys8H8MotorL10IsAbortingEv
-                0x0000000000003ddc        0x8
+                0x0000000000003dd0        0x8
  .text._ZN8eommpsys8H8MotorL10IsAbortingEv
-                0x0000000000003ddc        0x8 ./temp/Motor.o
-                0x0000000000003ddc                __ZN8eommpsys8H8MotorL10IsAbortingEv
+                0x0000000000003dd0        0x8 ./temp/Motor.o
+                0x0000000000003dd0                __ZN8eommpsys8H8MotorL10IsAbortingEv
 
 .text._ZN8eommpsys8H8MotorL5StartEv
-                0x0000000000003de4       0x16
+                0x0000000000003dd8       0x16
  .text._ZN8eommpsys8H8MotorL5StartEv
-                0x0000000000003de4       0x16 ./temp/Motor.o
-                0x0000000000003de4                __ZN8eommpsys8H8MotorL5StartEv
+                0x0000000000003dd8       0x16 ./temp/Motor.o
+                0x0000000000003dd8                __ZN8eommpsys8H8MotorL5StartEv
 
 .text._ZN8eommpsys8H8MotorL8OnCenterEv
-                0x0000000000003dfa        0x8
+                0x0000000000003dee        0x8
  .text._ZN8eommpsys8H8MotorL8OnCenterEv
-                0x0000000000003dfa        0x8 ./temp/Motor.o
-                0x0000000000003dfa                __ZN8eommpsys8H8MotorL8OnCenterEv
+                0x0000000000003dee        0x8 ./temp/Motor.o
+                0x0000000000003dee                __ZN8eommpsys8H8MotorL8OnCenterEv
 
 .text._ZN8eommpsys8H8MotorL17PutDownCenterFlagEv
-                0x0000000000003e02        0xa
+                0x0000000000003df6        0xa
  .text._ZN8eommpsys8H8MotorL17PutDownCenterFlagEv
-                0x0000000000003e02        0xa ./temp/Motor.o
-                0x0000000000003e02                __ZN8eommpsys8H8MotorL17PutDownCenterFlagEv
+                0x0000000000003df6        0xa ./temp/Motor.o
+                0x0000000000003df6                __ZN8eommpsys8H8MotorL17PutDownCenterFlagEv
 
 .text._ZN8eommpsys8H8MotorL6EnableEb
-                0x0000000000003e0c       0x10
+                0x0000000000003e00       0x10
  .text._ZN8eommpsys8H8MotorL6EnableEb
-                0x0000000000003e0c       0x10 ./temp/Motor.o
-                0x0000000000003e0c                __ZN8eommpsys8H8MotorL6EnableEb
+                0x0000000000003e00       0x10 ./temp/Motor.o
+                0x0000000000003e00                __ZN8eommpsys8H8MotorL6EnableEb
 
 .text._ZN8eommpsys8H8MotorL5BrakeEv
-                0x0000000000003e1c       0x3e
+                0x0000000000003e10       0x3e
  .text._ZN8eommpsys8H8MotorL5BrakeEv
-                0x0000000000003e1c       0x3e ./temp/Motor.o
-                0x0000000000003e1c                __ZN8eommpsys8H8MotorL5BrakeEv
+                0x0000000000003e10       0x3e ./temp/Motor.o
+                0x0000000000003e10                __ZN8eommpsys8H8MotorL5BrakeEv
 
 .text._ZN8eommpsys8H8MotorR5BrakeEv
-                0x0000000000003e5a       0x3e
+                0x0000000000003e4e       0x3e
  .text._ZN8eommpsys8H8MotorR5BrakeEv
-                0x0000000000003e5a       0x3e ./temp/Motor.o
-                0x0000000000003e5a                __ZN8eommpsys8H8MotorR5BrakeEv
+                0x0000000000003e4e       0x3e ./temp/Motor.o
+                0x0000000000003e4e                __ZN8eommpsys8H8MotorR5BrakeEv
 
 .text._ZNKSt9type_infoeqERKS_
-                0x0000000000003e98       0x7e
+                0x0000000000003e8c       0x7e
  .text._ZNKSt9type_infoeqERKS_
-                0x0000000000003e98       0x7e /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(class_type_info.o)
-                0x0000000000003e98                __ZNKSt9type_infoeqERKS_
+                0x0000000000003e8c       0x7e /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(class_type_info.o)
+                0x0000000000003e8c                __ZNKSt9type_infoeqERKS_
 
 .text._ZN10__cxxabiv112_GLOBAL__N_118contained_public_pENS_17__class_type_info10__sub_kindE
-                0x0000000000003f16       0x2a
+                0x0000000000003f0a       0x2a
  .text._ZN10__cxxabiv112_GLOBAL__N_118contained_public_pENS_17__class_type_info10__sub_kindE
-                0x0000000000003f16       0x2a /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(class_type_info.o)
+                0x0000000000003f0a       0x2a /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(class_type_info.o)
 
 .text._ZN10__cxxabiv117__class_type_info15__upcast_resultC2Ei
-                0x0000000000003f40       0x56
+                0x0000000000003f34       0x56
  .text._ZN10__cxxabiv117__class_type_info15__upcast_resultC2Ei
-                0x0000000000003f40       0x56 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(class_type_info.o)
-                0x0000000000003f40                __ZN10__cxxabiv117__class_type_info15__upcast_resultC2Ei
-                0x0000000000003f40                __ZN10__cxxabiv117__class_type_info15__upcast_resultC1Ei
+                0x0000000000003f34       0x56 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(class_type_info.o)
+                0x0000000000003f34                __ZN10__cxxabiv117__class_type_info15__upcast_resultC2Ei
+                0x0000000000003f34                __ZN10__cxxabiv117__class_type_info15__upcast_resultC1Ei
 
 .text._ZN10__cxxabiv117__class_type_infoD2Ev
-                0x0000000000003f96       0x34
+                0x0000000000003f8a       0x34
  .text._ZN10__cxxabiv117__class_type_infoD2Ev
-                0x0000000000003f96       0x34 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(class_type_info.o)
-                0x0000000000003f96                __ZN10__cxxabiv117__class_type_infoD2Ev
-                0x0000000000003f96                __ZN10__cxxabiv117__class_type_infoD1Ev
+                0x0000000000003f8a       0x34 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(class_type_info.o)
+                0x0000000000003f8a                __ZN10__cxxabiv117__class_type_infoD2Ev
+                0x0000000000003f8a                __ZN10__cxxabiv117__class_type_infoD1Ev
 
 .text._ZN10__cxxabiv117__class_type_infoD0Ev
-                0x0000000000003fca       0x32
+                0x0000000000003fbe       0x32
  .text._ZN10__cxxabiv117__class_type_infoD0Ev
-                0x0000000000003fca       0x32 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(class_type_info.o)
-                0x0000000000003fca                __ZN10__cxxabiv117__class_type_infoD0Ev
+                0x0000000000003fbe       0x32 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(class_type_info.o)
+                0x0000000000003fbe                __ZN10__cxxabiv117__class_type_infoD0Ev
 
 .text._ZNK10__cxxabiv117__class_type_info10__do_catchEPKSt9type_infoPPvj
-                0x0000000000003ffc       0x84
+                0x0000000000003ff0       0x84
  .text._ZNK10__cxxabiv117__class_type_info10__do_catchEPKSt9type_infoPPvj
-                0x0000000000003ffc       0x84 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(class_type_info.o)
-                0x0000000000003ffc                __ZNK10__cxxabiv117__class_type_info10__do_catchEPKSt9type_infoPPvj
+                0x0000000000003ff0       0x84 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(class_type_info.o)
+                0x0000000000003ff0                __ZNK10__cxxabiv117__class_type_info10__do_catchEPKSt9type_infoPPvj
 
 .text._ZNK10__cxxabiv117__class_type_info11__do_upcastEPKS0_PPv
-                0x0000000000004080       0xaa
+                0x0000000000004074       0xaa
  .text._ZNK10__cxxabiv117__class_type_info11__do_upcastEPKS0_PPv
-                0x0000000000004080       0xaa /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(class_type_info.o)
-                0x0000000000004080                __ZNK10__cxxabiv117__class_type_info11__do_upcastEPKS0_PPv
+                0x0000000000004074       0xaa /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(class_type_info.o)
+                0x0000000000004074                __ZNK10__cxxabiv117__class_type_info11__do_upcastEPKS0_PPv
 
 .text._ZNK10__cxxabiv117__class_type_info20__do_find_public_srcElPKvPKS0_S2_
-                0x000000000000412a       0x46
+                0x000000000000411e       0x46
  .text._ZNK10__cxxabiv117__class_type_info20__do_find_public_srcElPKvPKS0_S2_
-                0x000000000000412a       0x46 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(class_type_info.o)
-                0x000000000000412a                __ZNK10__cxxabiv117__class_type_info20__do_find_public_srcElPKvPKS0_S2_
+                0x000000000000411e       0x46 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(class_type_info.o)
+                0x000000000000411e                __ZNK10__cxxabiv117__class_type_info20__do_find_public_srcElPKvPKS0_S2_
 
 .text._ZNK10__cxxabiv117__class_type_info12__do_dyncastElNS0_10__sub_kindEPKS0_PKvS3_S5_RNS0_16__dyncast_resultE
-                0x0000000000004170       0xbc
+                0x0000000000004164       0xbc
  .text._ZNK10__cxxabiv117__class_type_info12__do_dyncastElNS0_10__sub_kindEPKS0_PKvS3_S5_RNS0_16__dyncast_resultE
-                0x0000000000004170       0xbc /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(class_type_info.o)
-                0x0000000000004170                __ZNK10__cxxabiv117__class_type_info12__do_dyncastElNS0_10__sub_kindEPKS0_PKvS3_S5_RNS0_16__dyncast_resultE
+                0x0000000000004164       0xbc /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(class_type_info.o)
+                0x0000000000004164                __ZNK10__cxxabiv117__class_type_info12__do_dyncastElNS0_10__sub_kindEPKS0_PKvS3_S5_RNS0_16__dyncast_resultE
 
 .text._ZNK10__cxxabiv117__class_type_info11__do_upcastEPKS0_PKvRNS0_15__upcast_resultE
-                0x000000000000422c       0x7a
+                0x0000000000004220       0x7a
  .text._ZNK10__cxxabiv117__class_type_info11__do_upcastEPKS0_PKvRNS0_15__upcast_resultE
-                0x000000000000422c       0x7a /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(class_type_info.o)
-                0x000000000000422c                __ZNK10__cxxabiv117__class_type_info11__do_upcastEPKS0_PKvRNS0_15__upcast_resultE
+                0x0000000000004220       0x7a /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(class_type_info.o)
+                0x0000000000004220                __ZNK10__cxxabiv117__class_type_info11__do_upcastEPKS0_PKvRNS0_15__upcast_resultE
 
 .text._ZNSt9type_infoD2Ev
-                0x00000000000042a6       0x28
+                0x000000000000429a       0x28
  .text._ZNSt9type_infoD2Ev
-                0x00000000000042a6       0x28 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(tinfo.o)
-                0x00000000000042a6                __ZNSt9type_infoD1Ev
-                0x00000000000042a6                __ZNSt9type_infoD2Ev
+                0x000000000000429a       0x28 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(tinfo.o)
+                0x000000000000429a                __ZNSt9type_infoD1Ev
+                0x000000000000429a                __ZNSt9type_infoD2Ev
 
 .text._ZNSt9type_infoD0Ev
-                0x00000000000042ce       0x32
+                0x00000000000042c2       0x32
  .text._ZNSt9type_infoD0Ev
-                0x00000000000042ce       0x32 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(tinfo.o)
-                0x00000000000042ce                __ZNSt9type_infoD0Ev
+                0x00000000000042c2       0x32 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(tinfo.o)
+                0x00000000000042c2                __ZNSt9type_infoD0Ev
 
 .text._ZNKSt9type_info14__is_pointer_pEv
-                0x0000000000004300       0x1a
+                0x00000000000042f4       0x1a
  .text._ZNKSt9type_info14__is_pointer_pEv
-                0x0000000000004300       0x1a /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(tinfo.o)
-                0x0000000000004300                __ZNKSt9type_info14__is_pointer_pEv
+                0x00000000000042f4       0x1a /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(tinfo.o)
+                0x00000000000042f4                __ZNKSt9type_info14__is_pointer_pEv
 
 .text._ZNKSt9type_info15__is_function_pEv
-                0x000000000000431a       0x1a
+                0x000000000000430e       0x1a
  .text._ZNKSt9type_info15__is_function_pEv
-                0x000000000000431a       0x1a /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(tinfo.o)
-                0x000000000000431a                __ZNKSt9type_info15__is_function_pEv
+                0x000000000000430e       0x1a /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(tinfo.o)
+                0x000000000000430e                __ZNKSt9type_info15__is_function_pEv
 
 .text._ZNKSt9type_info10__do_catchEPKS_PPvj
-                0x0000000000004334       0x42
+                0x0000000000004328       0x42
  .text._ZNKSt9type_info10__do_catchEPKS_PPvj
-                0x0000000000004334       0x42 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(tinfo.o)
-                0x0000000000004334                __ZNKSt9type_info10__do_catchEPKS_PPvj
+                0x0000000000004328       0x42 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(tinfo.o)
+                0x0000000000004328                __ZNKSt9type_info10__do_catchEPKS_PPvj
 
 .text._ZNKSt9type_info11__do_upcastEPKN10__cxxabiv117__class_type_infoEPPv
-                0x0000000000004376       0x2e
+                0x000000000000436a       0x2e
  .text._ZNKSt9type_info11__do_upcastEPKN10__cxxabiv117__class_type_infoEPPv
-                0x0000000000004376       0x2e /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(tinfo.o)
-                0x0000000000004376                __ZNKSt9type_info11__do_upcastEPKN10__cxxabiv117__class_type_infoEPPv
+                0x000000000000436a       0x2e /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(tinfo.o)
+                0x000000000000436a                __ZNKSt9type_info11__do_upcastEPKN10__cxxabiv117__class_type_infoEPPv
 
 .text._ZN10__cxxabiv120__si_class_type_infoD2Ev
-                0x00000000000043a4       0x34
+                0x0000000000004398       0x34
  .text._ZN10__cxxabiv120__si_class_type_infoD2Ev
-                0x00000000000043a4       0x34 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(si_class_type_info.o)
-                0x00000000000043a4                __ZN10__cxxabiv120__si_class_type_infoD1Ev
-                0x00000000000043a4                __ZN10__cxxabiv120__si_class_type_infoD2Ev
+                0x0000000000004398       0x34 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(si_class_type_info.o)
+                0x0000000000004398                __ZN10__cxxabiv120__si_class_type_infoD1Ev
+                0x0000000000004398                __ZN10__cxxabiv120__si_class_type_infoD2Ev
 
 .text._ZN10__cxxabiv120__si_class_type_infoD0Ev
-                0x00000000000043d8       0x32
+                0x00000000000043cc       0x32
  .text._ZN10__cxxabiv120__si_class_type_infoD0Ev
-                0x00000000000043d8       0x32 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(si_class_type_info.o)
-                0x00000000000043d8                __ZN10__cxxabiv120__si_class_type_infoD0Ev
+                0x00000000000043cc       0x32 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(si_class_type_info.o)
+                0x00000000000043cc                __ZN10__cxxabiv120__si_class_type_infoD0Ev
 
 .text._ZNK10__cxxabiv120__si_class_type_info20__do_find_public_srcElPKvPKNS_17__class_type_infoES2_
-                0x000000000000440a       0xc0
+                0x00000000000043fe       0xc0
  .text._ZNK10__cxxabiv120__si_class_type_info20__do_find_public_srcElPKvPKNS_17__class_type_infoES2_
-                0x000000000000440a       0xc0 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(si_class_type_info.o)
-                0x000000000000440a                __ZNK10__cxxabiv120__si_class_type_info20__do_find_public_srcElPKvPKNS_17__class_type_infoES2_
+                0x00000000000043fe       0xc0 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(si_class_type_info.o)
+                0x00000000000043fe                __ZNK10__cxxabiv120__si_class_type_info20__do_find_public_srcElPKvPKNS_17__class_type_infoES2_
 
 .text._ZNK10__cxxabiv120__si_class_type_info12__do_dyncastElNS_17__class_type_info10__sub_kindEPKS1_PKvS4_S6_RNS1_16__dyncast_resultE
-                0x00000000000044ca      0x184
+                0x00000000000044be      0x184
  .text._ZNK10__cxxabiv120__si_class_type_info12__do_dyncastElNS_17__class_type_info10__sub_kindEPKS1_PKvS4_S6_RNS1_16__dyncast_resultE
-                0x00000000000044ca      0x184 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(si_class_type_info.o)
-                0x00000000000044ca                __ZNK10__cxxabiv120__si_class_type_info12__do_dyncastElNS_17__class_type_info10__sub_kindEPKS1_PKvS4_S6_RNS1_16__dyncast_resultE
+                0x00000000000044be      0x184 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(si_class_type_info.o)
+                0x00000000000044be                __ZNK10__cxxabiv120__si_class_type_info12__do_dyncastElNS_17__class_type_info10__sub_kindEPKS1_PKvS4_S6_RNS1_16__dyncast_resultE
 
 .text._ZNK10__cxxabiv120__si_class_type_info11__do_upcastEPKNS_17__class_type_infoEPKvRNS1_15__upcast_resultE
-                0x000000000000464e       0xac
+                0x0000000000004642       0xac
  .text._ZNK10__cxxabiv120__si_class_type_info11__do_upcastEPKNS_17__class_type_infoEPKvRNS1_15__upcast_resultE
-                0x000000000000464e       0xac /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(si_class_type_info.o)
-                0x000000000000464e                __ZNK10__cxxabiv120__si_class_type_info11__do_upcastEPKNS_17__class_type_infoEPKvRNS1_15__upcast_resultE
+                0x0000000000004642       0xac /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(si_class_type_info.o)
+                0x0000000000004642                __ZNK10__cxxabiv120__si_class_type_info11__do_upcastEPKNS_17__class_type_infoEPKvRNS1_15__upcast_resultE
 
 .text._ZN10__cxxabiv112_GLOBAL__N_114adjust_pointerIvEEPKT_PKvl
-                0x00000000000046fa       0x32
+                0x00000000000046ee       0x32
  .text._ZN10__cxxabiv112_GLOBAL__N_114adjust_pointerIvEEPKT_PKvl
-                0x00000000000046fa       0x32 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(si_class_type_info.o)
+                0x00000000000046ee       0x32 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(si_class_type_info.o)
 
-.text._ZdlPvm   0x000000000000472c       0x30
- .text._ZdlPvm  0x000000000000472c       0x30 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(del_ops.o)
-                0x000000000000472c                __ZdlPvm
+.text._ZdlPvm   0x0000000000004720       0x30
+ .text._ZdlPvm  0x0000000000004720       0x30 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(del_ops.o)
+                0x0000000000004720                __ZdlPvm
 
-.text._ZdlPv    0x000000000000475c       0x24
- .text._ZdlPv   0x000000000000475c       0x24 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(del_op.o)
-                0x000000000000475c                __ZdlPv
+.text._ZdlPv    0x0000000000004750       0x24
+ .text._ZdlPv   0x0000000000004750       0x24 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(del_op.o)
+                0x0000000000004750                __ZdlPv
 
 .init
  *(.init)
@@ -899,130 +899,130 @@ LOAD /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a
  *(.got)
  *(.got.plt)
 
-.rodata         0x0000000000004780      0x58f
+.rodata         0x0000000000004774      0x52f
  *(.rodata)
- .rodata        0x0000000000004780       0x18 ./temp/main.o
- .rodata        0x0000000000004798       0xac ./temp/Mouse.o
- .rodata        0x0000000000004844       0x1f ./temp/TimerIntrMane.o
- *fill*         0x0000000000004863        0x1 
- .rodata        0x0000000000004864       0x18 ./temp/Motor.o
- .rodata        0x000000000000487c        0x8 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_thenan_sf.o)
-                0x000000000000487c                ___thenan_sf
- .rodata        0x0000000000004884      0x100 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_clz.o)
-                0x0000000000004884                ___clz_tab
- .rodata        0x0000000000004984        0x4 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-impure.o)
-                0x0000000000004984                __global_impure_ptr
+ .rodata        0x0000000000004774       0x18 ./temp/main.o
+ .rodata        0x000000000000478c       0x4c ./temp/Mouse.o
+ .rodata        0x00000000000047d8       0x1f ./temp/TimerIntrMane.o
+ *fill*         0x00000000000047f7        0x1 
+ .rodata        0x00000000000047f8       0x18 ./temp/Motor.o
+ .rodata        0x0000000000004810        0x8 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_thenan_sf.o)
+                0x0000000000004810                ___thenan_sf
+ .rodata        0x0000000000004818      0x100 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a(_clz.o)
+                0x0000000000004818                ___clz_tab
+ .rodata        0x0000000000004918        0x4 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-impure.o)
+                0x0000000000004918                __global_impure_ptr
  *(.rodata.*)
  .rodata._ZTSN8eommpsys12TimerManager9TimerBaseItEE
-                0x0000000000004988       0x27 ./temp/TimerIntrMane.o
-                0x0000000000004988                __ZTSN8eommpsys12TimerManager9TimerBaseItEE
- *fill*         0x00000000000049af        0x1 
+                0x000000000000491c       0x27 ./temp/TimerIntrMane.o
+                0x000000000000491c                __ZTSN8eommpsys12TimerManager9TimerBaseItEE
+ *fill*         0x0000000000004943        0x1 
  .rodata._ZTIN8eommpsys12TimerManager9TimerBaseItEE
-                0x00000000000049b0        0x8 ./temp/TimerIntrMane.o
-                0x00000000000049b0                __ZTIN8eommpsys12TimerManager9TimerBaseItEE
+                0x0000000000004944        0x8 ./temp/TimerIntrMane.o
+                0x0000000000004944                __ZTIN8eommpsys12TimerManager9TimerBaseItEE
  .rodata._ZTSN8eommpsys12TimerManager8TimerCH0E
-                0x00000000000049b8       0x23 ./temp/TimerIntrMane.o
-                0x00000000000049b8                __ZTSN8eommpsys12TimerManager8TimerCH0E
- *fill*         0x00000000000049db        0x1 
+                0x000000000000494c       0x23 ./temp/TimerIntrMane.o
+                0x000000000000494c                __ZTSN8eommpsys12TimerManager8TimerCH0E
+ *fill*         0x000000000000496f        0x1 
  .rodata._ZTIN8eommpsys12TimerManager8TimerCH0E
-                0x00000000000049dc        0xc ./temp/TimerIntrMane.o
-                0x00000000000049dc                __ZTIN8eommpsys12TimerManager8TimerCH0E
+                0x0000000000004970        0xc ./temp/TimerIntrMane.o
+                0x0000000000004970                __ZTIN8eommpsys12TimerManager8TimerCH0E
  .rodata._ZTSN8eommpsys12TimerManager8TimerCH1E
-                0x00000000000049e8       0x23 ./temp/TimerIntrMane.o
-                0x00000000000049e8                __ZTSN8eommpsys12TimerManager8TimerCH1E
- *fill*         0x0000000000004a0b        0x1 
+                0x000000000000497c       0x23 ./temp/TimerIntrMane.o
+                0x000000000000497c                __ZTSN8eommpsys12TimerManager8TimerCH1E
+ *fill*         0x000000000000499f        0x1 
  .rodata._ZTIN8eommpsys12TimerManager8TimerCH1E
-                0x0000000000004a0c        0xc ./temp/TimerIntrMane.o
-                0x0000000000004a0c                __ZTIN8eommpsys12TimerManager8TimerCH1E
+                0x00000000000049a0        0xc ./temp/TimerIntrMane.o
+                0x00000000000049a0                __ZTIN8eommpsys12TimerManager8TimerCH1E
  .rodata._ZTSN8eommpsys12TimerManager8TimerCH2E
-                0x0000000000004a18       0x23 ./temp/TimerIntrMane.o
-                0x0000000000004a18                __ZTSN8eommpsys12TimerManager8TimerCH2E
- *fill*         0x0000000000004a3b        0x1 
+                0x00000000000049ac       0x23 ./temp/TimerIntrMane.o
+                0x00000000000049ac                __ZTSN8eommpsys12TimerManager8TimerCH2E
+ *fill*         0x00000000000049cf        0x1 
  .rodata._ZTIN8eommpsys12TimerManager8TimerCH2E
-                0x0000000000004a3c        0xc ./temp/TimerIntrMane.o
-                0x0000000000004a3c                __ZTIN8eommpsys12TimerManager8TimerCH2E
+                0x00000000000049d0        0xc ./temp/TimerIntrMane.o
+                0x00000000000049d0                __ZTIN8eommpsys12TimerManager8TimerCH2E
  .rodata._ZTSN8eommpsys12TimerManager5TMR23E
-                0x0000000000004a48       0x20 ./temp/TimerIntrMane.o
-                0x0000000000004a48                __ZTSN8eommpsys12TimerManager5TMR23E
+                0x00000000000049dc       0x20 ./temp/TimerIntrMane.o
+                0x00000000000049dc                __ZTSN8eommpsys12TimerManager5TMR23E
  .rodata._ZTIN8eommpsys12TimerManager5TMR23E
-                0x0000000000004a68        0xc ./temp/TimerIntrMane.o
-                0x0000000000004a68                __ZTIN8eommpsys12TimerManager5TMR23E
+                0x00000000000049fc        0xc ./temp/TimerIntrMane.o
+                0x00000000000049fc                __ZTIN8eommpsys12TimerManager5TMR23E
  .rodata._ZTVN8eommpsys12TimerManager8TimerCH0E
-                0x0000000000004a74       0x2c ./temp/TimerIntrMane.o
-                0x0000000000004a74                __ZTVN8eommpsys12TimerManager8TimerCH0E
+                0x0000000000004a08       0x2c ./temp/TimerIntrMane.o
+                0x0000000000004a08                __ZTVN8eommpsys12TimerManager8TimerCH0E
  .rodata._ZTVN8eommpsys12TimerManager8TimerCH1E
-                0x0000000000004aa0       0x2c ./temp/TimerIntrMane.o
-                0x0000000000004aa0                __ZTVN8eommpsys12TimerManager8TimerCH1E
+                0x0000000000004a34       0x2c ./temp/TimerIntrMane.o
+                0x0000000000004a34                __ZTVN8eommpsys12TimerManager8TimerCH1E
  .rodata._ZTVN8eommpsys12TimerManager8TimerCH2E
-                0x0000000000004acc       0x2c ./temp/TimerIntrMane.o
-                0x0000000000004acc                __ZTVN8eommpsys12TimerManager8TimerCH2E
+                0x0000000000004a60       0x2c ./temp/TimerIntrMane.o
+                0x0000000000004a60                __ZTVN8eommpsys12TimerManager8TimerCH2E
  .rodata._ZTVN8eommpsys12TimerManager5TMR23E
-                0x0000000000004af8       0x2c ./temp/TimerIntrMane.o
-                0x0000000000004af8                __ZTVN8eommpsys12TimerManager5TMR23E
+                0x0000000000004a8c       0x2c ./temp/TimerIntrMane.o
+                0x0000000000004a8c                __ZTVN8eommpsys12TimerManager5TMR23E
  .rodata._ZTSN8eommpsys7H8MotorE
-                0x0000000000004b24       0x14 ./temp/Motor.o
-                0x0000000000004b24                __ZTSN8eommpsys7H8MotorE
+                0x0000000000004ab8       0x14 ./temp/Motor.o
+                0x0000000000004ab8                __ZTSN8eommpsys7H8MotorE
  .rodata._ZTIN8eommpsys7H8MotorE
-                0x0000000000004b38        0x8 ./temp/Motor.o
-                0x0000000000004b38                __ZTIN8eommpsys7H8MotorE
+                0x0000000000004acc        0x8 ./temp/Motor.o
+                0x0000000000004acc                __ZTIN8eommpsys7H8MotorE
  .rodata._ZTSN8eommpsys8H8MotorRE
-                0x0000000000004b40       0x15 ./temp/Motor.o
-                0x0000000000004b40                __ZTSN8eommpsys8H8MotorRE
- *fill*         0x0000000000004b55        0x3 
+                0x0000000000004ad4       0x15 ./temp/Motor.o
+                0x0000000000004ad4                __ZTSN8eommpsys8H8MotorRE
+ *fill*         0x0000000000004ae9        0x3 
  .rodata._ZTIN8eommpsys8H8MotorRE
-                0x0000000000004b58        0xc ./temp/Motor.o
-                0x0000000000004b58                __ZTIN8eommpsys8H8MotorRE
+                0x0000000000004aec        0xc ./temp/Motor.o
+                0x0000000000004aec                __ZTIN8eommpsys8H8MotorRE
  .rodata._ZTSN8eommpsys8H8MotorLE
-                0x0000000000004b64       0x15 ./temp/Motor.o
-                0x0000000000004b64                __ZTSN8eommpsys8H8MotorLE
- *fill*         0x0000000000004b79        0x3 
+                0x0000000000004af8       0x15 ./temp/Motor.o
+                0x0000000000004af8                __ZTSN8eommpsys8H8MotorLE
+ *fill*         0x0000000000004b0d        0x3 
  .rodata._ZTIN8eommpsys8H8MotorLE
-                0x0000000000004b7c        0xc ./temp/Motor.o
-                0x0000000000004b7c                __ZTIN8eommpsys8H8MotorLE
+                0x0000000000004b10        0xc ./temp/Motor.o
+                0x0000000000004b10                __ZTIN8eommpsys8H8MotorLE
  .rodata._ZTVN8eommpsys8H8MotorRE
-                0x0000000000004b88       0x38 ./temp/Motor.o
-                0x0000000000004b88                __ZTVN8eommpsys8H8MotorRE
+                0x0000000000004b1c       0x38 ./temp/Motor.o
+                0x0000000000004b1c                __ZTVN8eommpsys8H8MotorRE
  .rodata._ZTVN8eommpsys8H8MotorLE
-                0x0000000000004bc0       0x38 ./temp/Motor.o
-                0x0000000000004bc0                __ZTVN8eommpsys8H8MotorLE
+                0x0000000000004b54       0x38 ./temp/Motor.o
+                0x0000000000004b54                __ZTVN8eommpsys8H8MotorLE
  .rodata._ZN10__cxxabiv112_GLOBAL__N_1L20nonvirtual_base_typeE
-                0x0000000000004bf8        0x4 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(class_type_info.o)
+                0x0000000000004b8c        0x4 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(class_type_info.o)
  .rodata._ZTVN10__cxxabiv117__class_type_infoE
-                0x0000000000004bfc       0x2c /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(class_type_info.o)
-                0x0000000000004bfc                __ZTVN10__cxxabiv117__class_type_infoE
+                0x0000000000004b90       0x2c /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(class_type_info.o)
+                0x0000000000004b90                __ZTVN10__cxxabiv117__class_type_infoE
  .rodata._ZTIN10__cxxabiv117__class_type_infoE
-                0x0000000000004c28        0xc /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(class_type_info.o)
-                0x0000000000004c28                __ZTIN10__cxxabiv117__class_type_infoE
+                0x0000000000004bbc        0xc /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(class_type_info.o)
+                0x0000000000004bbc                __ZTIN10__cxxabiv117__class_type_infoE
  .rodata._ZTSN10__cxxabiv117__class_type_infoE
-                0x0000000000004c34       0x22 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(class_type_info.o)
-                0x0000000000004c34                __ZTSN10__cxxabiv117__class_type_infoE
- *fill*         0x0000000000004c56        0x2 
+                0x0000000000004bc8       0x22 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(class_type_info.o)
+                0x0000000000004bc8                __ZTSN10__cxxabiv117__class_type_infoE
+ *fill*         0x0000000000004bea        0x2 
  .rodata._ZN10__cxxabiv112_GLOBAL__N_1L20nonvirtual_base_typeE
-                0x0000000000004c58        0x4 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(tinfo.o)
+                0x0000000000004bec        0x4 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(tinfo.o)
  .rodata._ZTVSt9type_info
-                0x0000000000004c5c       0x20 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(tinfo.o)
-                0x0000000000004c5c                __ZTVSt9type_info
+                0x0000000000004bf0       0x20 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(tinfo.o)
+                0x0000000000004bf0                __ZTVSt9type_info
  .rodata._ZTISt9type_info
-                0x0000000000004c7c        0x8 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(tinfo.o)
-                0x0000000000004c7c                __ZTISt9type_info
+                0x0000000000004c10        0x8 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(tinfo.o)
+                0x0000000000004c10                __ZTISt9type_info
  .rodata._ZTSSt9type_info
-                0x0000000000004c84        0xd /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(tinfo.o)
-                0x0000000000004c84                __ZTSSt9type_info
- *fill*         0x0000000000004c91        0x3 
+                0x0000000000004c18        0xd /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(tinfo.o)
+                0x0000000000004c18                __ZTSSt9type_info
+ *fill*         0x0000000000004c25        0x3 
  .rodata._ZN10__cxxabiv112_GLOBAL__N_1L20nonvirtual_base_typeE
-                0x0000000000004c94        0x4 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(si_class_type_info.o)
+                0x0000000000004c28        0x4 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(si_class_type_info.o)
  .rodata._ZTVN10__cxxabiv120__si_class_type_infoE
-                0x0000000000004c98       0x2c /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(si_class_type_info.o)
-                0x0000000000004c98                __ZTVN10__cxxabiv120__si_class_type_infoE
+                0x0000000000004c2c       0x2c /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(si_class_type_info.o)
+                0x0000000000004c2c                __ZTVN10__cxxabiv120__si_class_type_infoE
  .rodata._ZTIN10__cxxabiv120__si_class_type_infoE
-                0x0000000000004cc4        0xc /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(si_class_type_info.o)
-                0x0000000000004cc4                __ZTIN10__cxxabiv120__si_class_type_infoE
+                0x0000000000004c58        0xc /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(si_class_type_info.o)
+                0x0000000000004c58                __ZTIN10__cxxabiv120__si_class_type_infoE
  .rodata._ZTSN10__cxxabiv120__si_class_type_infoE
-                0x0000000000004cd0       0x25 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(si_class_type_info.o)
-                0x0000000000004cd0                __ZTSN10__cxxabiv120__si_class_type_infoE
+                0x0000000000004c64       0x25 /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libstdc++.a(si_class_type_info.o)
+                0x0000000000004c64                __ZTSN10__cxxabiv120__si_class_type_infoE
  .rodata.str1.1
-                0x0000000000004cf5       0x1a /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-sbrk.o)
-                0x0000000000004d0f                _erodata = .
+                0x0000000000004c89       0x1a /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/../../../../h8300-elf/lib/h8300h/libc.a(lib_a-sbrk.o)
+                0x0000000000004ca3                _erodata = .
 
 .eh_frame_hdr
  *(.eh_frame_hdr)
@@ -1033,27 +1033,27 @@ LOAD /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a
 .jcr
  *(.jcr)
 
-.tors           0x0000000000004d0f       0x10
-                0x0000000000004d0f                __CTOR_LIST__ = .
-                0x0000000000004d0f        0x4 LONG 0x0 (((__CTOR_END__ - __CTOR_LIST__) / 0x4) - 0x2)
-                0x0000000000004d13                ___ctors = .
+.tors           0x0000000000004ca3       0x10
+                0x0000000000004ca3                __CTOR_LIST__ = .
+                0x0000000000004ca3        0x4 LONG 0x0 (((__CTOR_END__ - __CTOR_LIST__) / 0x4) - 0x2)
+                0x0000000000004ca7                ___ctors = .
  *(.ctors)
-                0x0000000000004d13                ___ctors_end = .
-                0x0000000000004d13        0x4 LONG 0x0
-                0x0000000000004d17                __CTOR_END__ = .
-                0x0000000000004d17                __DTOR_LIST__ = .
-                0x0000000000004d17        0x4 LONG 0x0 (((__DTOR_END__ - __DTOR_LIST__) / 0x4) - 0x2)
-                0x0000000000004d1b                ___dtors = .
+                0x0000000000004ca7                ___ctors_end = .
+                0x0000000000004ca7        0x4 LONG 0x0
+                0x0000000000004cab                __CTOR_END__ = .
+                0x0000000000004cab                __DTOR_LIST__ = .
+                0x0000000000004cab        0x4 LONG 0x0 (((__DTOR_END__ - __DTOR_LIST__) / 0x4) - 0x2)
+                0x0000000000004caf                ___dtors = .
  *(.dtors)
-                0x0000000000004d1b                ___dtors_end = .
-                0x0000000000004d1b        0x4 LONG 0x0
-                0x0000000000004d1f                __DTOR_END__ = .
-                0x0000000000004d1f                _mdata = .
+                0x0000000000004caf                ___dtors_end = .
+                0x0000000000004caf        0x4 LONG 0x0
+                0x0000000000004cb3                __DTOR_END__ = .
+                0x0000000000004cb3                _mdata = .
 
-.data           0x0000000000ffbf20       0x5d load address 0x0000000000004d1f
+.data           0x0000000000ffbf20       0x5d load address 0x0000000000004cb3
                 0x0000000000ffbf20                _data = .
  *(.data)
- .data          0x0000000000ffbf20        0x0 /tmp/ccDcOTPj.o
+ .data          0x0000000000ffbf20        0x0 /tmp/ccM2FPHO.o
  .data          0x0000000000ffbf20        0x0 ./temp/ui.o
  .data          0x0000000000ffbf20        0x0 ./temp/delay.o
  .data          0x0000000000ffbf20        0x0 ./temp/intr.o
@@ -1107,10 +1107,10 @@ LOAD /usr/local/h8300-elf/lib/gcc/h8300-elf/8.5.0/h8300h/libgcc.a
 .gcc_exc
  *(.gcc_exc)
 
-.bss            0x0000000000ffbf80       0xa6 load address 0x0000000000004d80
+.bss            0x0000000000ffbf80       0xa6 load address 0x0000000000004d14
                 0x0000000000ffbf80                _bss = .
  *(.bss)
- .bss           0x0000000000ffbf80        0x0 /tmp/ccDcOTPj.o
+ .bss           0x0000000000ffbf80        0x0 /tmp/ccM2FPHO.o
  .bss           0x0000000000ffbf80        0x8 ./temp/ui.o
                 0x0000000000ffbf80                __ZN8eommpsys2ui10CeraBuzzer5timerE
                 0x0000000000ffbf84                __ZN8eommpsys2ui10CeraBuzzer7base_hzE

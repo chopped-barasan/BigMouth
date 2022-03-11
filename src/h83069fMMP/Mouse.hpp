@@ -5,10 +5,9 @@ class H8Mouse {
  private:
   static inline auto& wall_digsens =
       *reinterpret_cast<union un_degisens*>(H8Reg::addr_pbdr);
+  H8MovementController mov_con;
 
   volatile MouseState state;
-
-  H8MovementController mov_con;
 
   Direction next_dir;
 

@@ -70,8 +70,8 @@ class H8MovementController {
    */
   template <uint16_t distance, uint16_t speed>
   Result Advance(void) {
-    constexpr uint16_t movement_range = distance / utils::DISTANCE_PER_DEGREE;
-    constexpr uint16_t wheel_speed =
+    constexpr uint32_t movement_range = distance / utils::DISTANCE_PER_DEGREE;
+    constexpr uint32_t wheel_speed =
         speed / utils::DISTANCE_PER_DEGREE;  // degree per sec
     Result left_stats, right_stats;
 
